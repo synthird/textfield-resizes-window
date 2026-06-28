@@ -43,6 +43,8 @@ public class MainFrame extends JFrame implements ActionListener, ComponentListen
 	int widthSize = 325,
 		heightSize = 247;
 
+	boolean customIconSelected = false;
+
 	public MainFrame() {
 		// Width panel
 		JPanel widthPanel = setUpPanel(0);
