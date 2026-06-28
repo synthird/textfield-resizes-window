@@ -55,7 +55,7 @@ public class MainFrame extends JFrame implements ActionListener, ComponentListen
 		heightPanel.add(new JLabel("px (Height)"));
 
 		// Change window title label
-		setUpPanel(2).add(new JLabel("Change the window title (Press enter to change.)"));
+		setUpPanel(2).add(new JLabel("Change the window title"));
 
 		// Change window title textfield
 		JPanel changeWindowTitlePanel = setUpPanel(3);
