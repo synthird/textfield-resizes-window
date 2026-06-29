@@ -169,6 +169,8 @@ public class MainFrame extends JFrame implements ActionListener, ComponentListen
 		} else if (source == resizable) {
 			this.setResizable(!this.isResizable());
 		 } else if (source == darkMode) {
+			// Change to light/dark mode.
+
 			if (!FlatLaf.isLafDark()) {
 				FlatDarkLaf.setup();
 			} else {
@@ -178,6 +180,7 @@ public class MainFrame extends JFrame implements ActionListener, ComponentListen
 			setDefaultIconTheme();
 		 	FlatLaf.updateUI();
 		} else if (source == changeIconButton) {
+			// Choose a custom icon.
 			int hasChosenIcon = fileChooser.showOpenDialog(this);
 
 			if (hasChosenIcon == JFileChooser.APPROVE_OPTION) {
@@ -189,8 +192,8 @@ public class MainFrame extends JFrame implements ActionListener, ComponentListen
 				this.setIconImage(customIcon);
 			}
 		} else if (source == resetIconButton) {
+			// Reset the custom icon to default one.
 			customIconSelected = false;
-			System.out.println("Reset icon");
 			setDefaultIconTheme();
 		} else if (source == exitButton) {
 			System.exit(0);
