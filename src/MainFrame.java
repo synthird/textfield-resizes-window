@@ -61,12 +61,10 @@ public class MainFrame extends JFrame implements ActionListener, ComponentListen
 		// Change icon buttons
 		JPanel changeIconPanel = setUpPanel(2);
 
-		changeIconButton = new JButton("Change window icon");
-		changeIconButton.addActionListener(this);
+		changeIconButton = setUpButton("Change window icon");
 		changeIconPanel.add(changeIconButton);
 
-		resetIconButton = new JButton("Reset window icon");
-		resetIconButton.addActionListener(this);
+		resetIconButton = setUpButton("Reset window icon");
 		changeIconPanel.add(resetIconButton);
 
 		changeIconPanel.add(changeWindowTitle);
@@ -95,8 +93,12 @@ public class MainFrame extends JFrame implements ActionListener, ComponentListen
 		// Resize & exit buttons
 		buttonPanel = setUpPanel(7);
 		buttonPanel.setLocation(buttonPanel.getX(), buttonPanel.getY() - 35);
+
 		resizeButton = setUpButton("Resize");
+		buttonPanel.add(resizeButton);
+
 		exitButton = setUpButton("Exit");
+		buttonPanel.add(exitButton);
 
 		// Window setup
 		this.setTitle(originalWindowTitle);
@@ -134,7 +136,6 @@ public class MainFrame extends JFrame implements ActionListener, ComponentListen
 	private JButton setUpButton(String text) {
 		JButton button = new JButton(text);
 		button.addActionListener(this);
-		buttonPanel.add(button);
 		return button;
 	}
 
