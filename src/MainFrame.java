@@ -169,7 +169,6 @@ public class MainFrame extends JFrame implements ActionListener, ComponentListen
 			}
 
 			setDefaultIconTheme();
-
 		 	FlatLaf.updateUI();
 		} else if (source == exitButton) {
 			System.exit(0);
