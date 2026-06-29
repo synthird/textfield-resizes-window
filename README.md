@@ -14,7 +14,7 @@ Resize a GUI window using textfields/textboxes.
 
 You can download the latest version in the [releases page](https://github.com/Synthird/textfield-resizes-window/releases/latest).
 
-### Opening the exe in the zip folder (Windows only)
+### Opening the exe (Windows only)
 
 1. Download and unzip the zip folder called ```windows-textfield-resizes-window.zip```.
 2. Open the exe file in the unzipped folder.
