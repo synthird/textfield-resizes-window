@@ -143,6 +143,16 @@ public class MainFrame extends JFrame implements ActionListener, ComponentListen
 		return panel;
 	}
 
+	private void setDefaultIconTheme() {
+		if (!FlatLaf.isLafDark()) {
+			System.out.println("Change to dark icon");
+			this.setIconImage(darkModeIcon);
+		} else {
+			System.out.println("Light icon");
+			this.setIconImage(lightModeIcon);
+		}
+	}
+
 	// Interface methods
 
 	@Override
@@ -155,12 +165,12 @@ public class MainFrame extends JFrame implements ActionListener, ComponentListen
 			this.setResizable(!this.isResizable());
 		 } else if (source == darkMode) {
 			if (!FlatLaf.isLafDark()) {
-				this.setIconImage(darkModeIcon);
 				FlatDarkLaf.setup();
 			} else {
-				this.setIconImage(lightModeIcon);
 				FlatLightLaf.setup();
 			}
+
+			setDefaultIconTheme();
 
 		 	FlatLaf.updateUI();
 		} else if (source == exitButton) {
