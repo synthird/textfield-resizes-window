@@ -63,6 +63,7 @@ public class MainFrame extends JFrame implements ActionListener, ComponentListen
 		changeIconPanel.add(changeIconButton);
 
 		resetIconButton = new JButton("Reset window icon");
+		resetIconButton.addActionListener(this);
 		changeIconPanel.add(resetIconButton);
 
 		changeIconPanel.add(changeWindowTitle);
@@ -172,6 +173,10 @@ public class MainFrame extends JFrame implements ActionListener, ComponentListen
 
 			setDefaultIconTheme();
 		 	FlatLaf.updateUI();
+		} else if (source == resetIconButton) {
+			customIconSelected = false;
+			System.out.println("Reset icon");
+			setDefaultIconTheme();
 		} else if (source == exitButton) {
 			System.exit(0);
 		}
