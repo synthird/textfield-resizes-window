@@ -7,8 +7,8 @@ Resize a GUI window using textfields/textboxes.
 
 ## Third-party libraries used
 
-- [FlatLaf](https://formdev.com/flatlaf/) for the light and dark themes.
-- [Packr](https://github.com/libgdx/packr) for jar to exe file conversion.
+- [FlatLaf](https://formdev.com/flatlaf/)
+- [Packr](https://github.com/libgdx/packr)
 
 ## Download/Installation
 
