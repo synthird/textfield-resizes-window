@@ -11,7 +11,6 @@ import java.awt.event.KeyListener;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
-import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -24,6 +23,7 @@ import javax.swing.event.ChangeListener;
 import com.formdev.flatlaf.FlatDarkLaf;
 import com.formdev.flatlaf.FlatLaf;
 import com.formdev.flatlaf.FlatLightLaf;
+import com.formdev.flatlaf.util.SystemFileChooser;
 
 public class MainFrame extends JFrame implements ActionListener, ComponentListener, ChangeListener, KeyListener {
 	String originalWindowTitle = "Textfield resizes window";
@@ -32,7 +32,7 @@ public class MainFrame extends JFrame implements ActionListener, ComponentListen
 		lightModeIcon = new ImageIcon("LightModeIcon.png").getImage();
 
 	FlowLayout flowLayout = new FlowLayout(FlowLayout.LEFT);
-	JFileChooser fileChooser = new JFileChooser();
+	SystemFileChooser fileChooser = new SystemFileChooser();
 
 	JSpinner widthField, heightField;
 	JTextField changeWindowTitle = new JTextField(25);
@@ -183,7 +183,7 @@ public class MainFrame extends JFrame implements ActionListener, ComponentListen
 			// Choose a custom icon.
 			int hasChosenIcon = fileChooser.showOpenDialog(this);
 
-			if (hasChosenIcon == JFileChooser.APPROVE_OPTION) {
+			if (hasChosenIcon == SystemFileChooser.APPROVE_OPTION) {
 				customIconSelected = true;
 
 				String iconPath = fileChooser.getSelectedFile().getAbsolutePath();
