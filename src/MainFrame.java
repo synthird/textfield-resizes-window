@@ -11,6 +11,7 @@ import java.awt.event.KeyListener;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
+import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -31,6 +32,7 @@ public class MainFrame extends JFrame implements ActionListener, ComponentListen
 		lightModeIcon = new ImageIcon("LightModeIcon.png").getImage();
 
 	FlowLayout flowLayout = new FlowLayout(FlowLayout.LEFT);
+	JFileChooser fileChooser = new JFileChooser();
 
 	JSpinner widthField, heightField;
 	JTextField changeWindowTitle = new JTextField(25);
@@ -60,6 +62,7 @@ public class MainFrame extends JFrame implements ActionListener, ComponentListen
 		JPanel changeIconPanel = setUpPanel(2);
 
 		changeIconButton = new JButton("Change window icon");
+		changeIconButton.addActionListener(this);
 		changeIconPanel.add(changeIconButton);
 
 		resetIconButton = new JButton("Reset window icon");
@@ -173,6 +176,17 @@ public class MainFrame extends JFrame implements ActionListener, ComponentListen
 
 			setDefaultIconTheme();
 		 	FlatLaf.updateUI();
+		} else if (source == changeIconButton) {
+			int hasChosenIcon = fileChooser.showOpenDialog(this);
+
+			if (hasChosenIcon == JFileChooser.APPROVE_OPTION) {
+				customIconSelected = true;
+
+				String iconPath = fileChooser.getSelectedFile().getAbsolutePath();
+				Image customIcon = new ImageIcon(iconPath).getImage();
+
+				this.setIconImage(customIcon);
+			}
 		} else if (source == resetIconButton) {
 			customIconSelected = false;
 			System.out.println("Reset icon");
