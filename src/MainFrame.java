@@ -145,11 +145,9 @@ public class MainFrame extends JFrame implements ActionListener, ComponentListen
 
 	private void setDefaultIconTheme() {
 		if (!FlatLaf.isLafDark()) {
-			System.out.println("Change to dark icon");
-			this.setIconImage(darkModeIcon);
-		} else {
-			System.out.println("Light icon");
 			this.setIconImage(lightModeIcon);
+		} else {
+			this.setIconImage(darkModeIcon);
 		}
 	}
 
