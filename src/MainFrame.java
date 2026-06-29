@@ -24,6 +24,7 @@ import com.formdev.flatlaf.FlatDarkLaf;
 import com.formdev.flatlaf.FlatLaf;
 import com.formdev.flatlaf.FlatLightLaf;
 import com.formdev.flatlaf.util.SystemFileChooser;
+import com.formdev.flatlaf.util.SystemFileChooser.FileNameExtensionFilter;
 
 public class MainFrame extends JFrame implements ActionListener, ComponentListener, ChangeListener, KeyListener {
 	String originalWindowTitle = "Textfield resizes window";
@@ -32,7 +33,10 @@ public class MainFrame extends JFrame implements ActionListener, ComponentListen
 		lightModeIcon = new ImageIcon("LightModeIcon.png").getImage();
 
 	FlowLayout flowLayout = new FlowLayout(FlowLayout.LEFT);
+
+
 	SystemFileChooser fileChooser = new SystemFileChooser();
+	FileNameExtensionFilter iconFileFilter = new FileNameExtensionFilter("png or jpg", "png", "jpg");
 
 	JSpinner widthField, heightField;
 	JTextField changeWindowTitle = new JTextField(25);
@@ -48,6 +52,8 @@ public class MainFrame extends JFrame implements ActionListener, ComponentListen
 	boolean customIconSelected = false;
 
 	public MainFrame() {
+		fileChooser.setFileFilter(iconFileFilter);
+
 		// Width panel
 		JPanel widthPanel = setUpPanel(0);
 		widthField = setUpSpinner(widthPanel, widthSize);
