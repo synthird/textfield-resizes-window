@@ -42,8 +42,8 @@ public class MainFrame extends JFrame implements ActionListener, ComponentListen
 	JPanel buttonPanel;
 	JButton changeIconButton, resetIconButton, resizeButton, exitButton;
 
-	int widthSize = 325,
-		heightSize = 247;
+	int widthSize = 364,
+		heightSize = 283;
 
 	boolean customIconSelected = false;
 
