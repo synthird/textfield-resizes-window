@@ -56,29 +56,33 @@ public class MainFrame extends JFrame implements ActionListener, ComponentListen
 		heightField = setUpSpinner(heightPanel, heightSize);
 		heightPanel.add(new JLabel("px (Height)"));
 
+		// Change icon buttons
+		JPanel changeIconPanel = setUpPanel(2);
+		changeIconPanel.add(changeWindowTitle);
+
 		// Change window title label
-		setUpPanel(2).add(new JLabel("Change the window title"));
+		setUpPanel(3).add(new JLabel("Change the window title"));
 
 		// Change window title textfield
-		JPanel changeWindowTitlePanel = setUpPanel(3);
+		JPanel changeWindowTitlePanel = setUpPanel(4);
 		changeWindowTitlePanel.setLocation(changeWindowTitlePanel.getX(), changeWindowTitlePanel.getY() - 15);
 		changeWindowTitle.addKeyListener(this);
 		changeWindowTitlePanel.add(changeWindowTitle);
 
 		// Resizable checkbox
 		resizable = setUpCheckBox("Resize with mouse and maximize/restore button");
-		JPanel resizablePanel = setUpPanel(4);
+		JPanel resizablePanel = setUpPanel(5);
 		resizablePanel.setLocation(resizablePanel.getX(), resizablePanel.getY() - 20);
 		resizablePanel.add(resizable);
 
 		// Toggle between light and dark mode
 		darkMode = setUpCheckBox("Dark mode");
-		JPanel darkModePanel = setUpPanel(5);
+		JPanel darkModePanel = setUpPanel(6);
 		darkModePanel.setLocation(darkModePanel.getX(), darkModePanel.getY() - 28);
 		darkModePanel.add(darkMode);
 
-		// Buttons
-		buttonPanel = setUpPanel(6);
+		// Resize & exit buttons
+		buttonPanel = setUpPanel(7);
 		buttonPanel.setLocation(buttonPanel.getX(), buttonPanel.getY() - 35);
 		resizeButton = setUpButton("Resize");
 		exitButton = setUpButton("Exit");
