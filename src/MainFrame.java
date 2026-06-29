@@ -28,28 +28,32 @@ import com.formdev.flatlaf.util.SystemFileChooser.FileNameExtensionFilter;
 
 public class MainFrame extends JFrame implements ActionListener, ComponentListener, ChangeListener, KeyListener {
 	String originalWindowTitle = "Textfield resizes window";
+	boolean customIconSelected = false;
 
+	// Default icon
 	Image darkModeIcon = new ImageIcon("DarkModeIcon.png").getImage(),
 		lightModeIcon = new ImageIcon("LightModeIcon.png").getImage();
 
 	FlowLayout flowLayout = new FlowLayout(FlowLayout.LEFT);
 
-
+	// File chooser
 	SystemFileChooser fileChooser = new SystemFileChooser();
 	FileNameExtensionFilter iconFileFilter = new FileNameExtensionFilter("png or jpg", "png", "jpg");
 
+	// Textfields
 	JSpinner widthField, heightField;
 	JTextField changeWindowTitle = new JTextField(25);
 
+	// Checkboxes
 	JCheckBox resizable, darkMode;
 
+	// Buttons
 	JPanel buttonPanel;
 	JButton changeIconButton, resetIconButton, resizeButton, exitButton;
 
+	// Default window size
 	int widthSize = 364,
 		heightSize = 283;
-
-	boolean customIconSelected = false;
 
 	public MainFrame() {
 		fileChooser.setFileFilter(iconFileFilter);
