@@ -11,6 +11,7 @@ import java.awt.event.KeyListener;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
+import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -31,6 +32,7 @@ public class MainFrame extends JFrame implements ActionListener, ComponentListen
 		lightModeIcon = new ImageIcon("LightModeIcon.png").getImage();
 
 	FlowLayout flowLayout = new FlowLayout(FlowLayout.LEFT);
+	JFileChooser fileChooser = new JFileChooser();
 
 	JSpinner widthField, heightField;
 	JTextField changeWindowTitle = new JTextField(25);
@@ -38,10 +40,12 @@ public class MainFrame extends JFrame implements ActionListener, ComponentListen
 	JCheckBox resizable, darkMode;
 
 	JPanel buttonPanel;
-	JButton resizeButton, exitButton;
+	JButton changeIconButton, resetIconButton, resizeButton, exitButton;
 
 	int widthSize = 325,
 		heightSize = 247;
+
+	boolean customIconSelected = false;
 
 	public MainFrame() {
 		// Width panel
@@ -54,29 +58,42 @@ public class MainFrame extends JFrame implements ActionListener, ComponentListen
 		heightField = setUpSpinner(heightPanel, heightSize);
 		heightPanel.add(new JLabel("px (Height)"));
 
+		// Change icon buttons
+		JPanel changeIconPanel = setUpPanel(2);
+
+		changeIconButton = new JButton("Change window icon");
+		changeIconButton.addActionListener(this);
+		changeIconPanel.add(changeIconButton);
+
+		resetIconButton = new JButton("Reset window icon");
+		resetIconButton.addActionListener(this);
+		changeIconPanel.add(resetIconButton);
+
+		changeIconPanel.add(changeWindowTitle);
+
 		// Change window title label
-		setUpPanel(2).add(new JLabel("Change the window title"));
+		setUpPanel(3).add(new JLabel("Change the window title"));
 
 		// Change window title textfield
-		JPanel changeWindowTitlePanel = setUpPanel(3);
+		JPanel changeWindowTitlePanel = setUpPanel(4);
 		changeWindowTitlePanel.setLocation(changeWindowTitlePanel.getX(), changeWindowTitlePanel.getY() - 15);
 		changeWindowTitle.addKeyListener(this);
 		changeWindowTitlePanel.add(changeWindowTitle);
 
 		// Resizable checkbox
 		resizable = setUpCheckBox("Resize with mouse and maximize/restore button");
-		JPanel resizablePanel = setUpPanel(4);
+		JPanel resizablePanel = setUpPanel(5);
 		resizablePanel.setLocation(resizablePanel.getX(), resizablePanel.getY() - 20);
 		resizablePanel.add(resizable);
 
 		// Toggle between light and dark mode
 		darkMode = setUpCheckBox("Dark mode");
-		JPanel darkModePanel = setUpPanel(5);
+		JPanel darkModePanel = setUpPanel(6);
 		darkModePanel.setLocation(darkModePanel.getX(), darkModePanel.getY() - 28);
 		darkModePanel.add(darkMode);
 
-		// Buttons
-		buttonPanel = setUpPanel(6);
+		// Resize & exit buttons
+		buttonPanel = setUpPanel(7);
 		buttonPanel.setLocation(buttonPanel.getX(), buttonPanel.getY() - 35);
 		resizeButton = setUpButton("Resize");
 		exitButton = setUpButton("Exit");
@@ -130,6 +147,16 @@ public class MainFrame extends JFrame implements ActionListener, ComponentListen
 		return panel;
 	}
 
+	private void setDefaultIconTheme() {
+		if (customIconSelected == false) {
+			if (!FlatLaf.isLafDark()) {
+				this.setIconImage(lightModeIcon);
+			} else {
+				this.setIconImage(darkModeIcon);
+			}
+		}
+	}
+
 	// Interface methods
 
 	@Override
@@ -142,14 +169,28 @@ public class MainFrame extends JFrame implements ActionListener, ComponentListen
 			this.setResizable(!this.isResizable());
 		 } else if (source == darkMode) {
 			if (!FlatLaf.isLafDark()) {
-				this.setIconImage(darkModeIcon);
 				FlatDarkLaf.setup();
 			} else {
-				this.setIconImage(lightModeIcon);
 				FlatLightLaf.setup();
 			}
 
+			setDefaultIconTheme();
 		 	FlatLaf.updateUI();
+		} else if (source == changeIconButton) {
+			int hasChosenIcon = fileChooser.showOpenDialog(this);
+
+			if (hasChosenIcon == JFileChooser.APPROVE_OPTION) {
+				customIconSelected = true;
+
+				String iconPath = fileChooser.getSelectedFile().getAbsolutePath();
+				Image customIcon = new ImageIcon(iconPath).getImage();
+
+				this.setIconImage(customIcon);
+			}
+		} else if (source == resetIconButton) {
+			customIconSelected = false;
+			System.out.println("Reset icon");
+			setDefaultIconTheme();
 		} else if (source == exitButton) {
 			System.exit(0);
 		}
