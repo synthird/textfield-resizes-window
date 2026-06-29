@@ -38,7 +38,7 @@ public class MainFrame extends JFrame implements ActionListener, ComponentListen
 	JCheckBox resizable, darkMode;
 
 	JPanel buttonPanel;
-	JButton resizeButton, exitButton;
+	JButton changeIconButton, resetIconButton, resizeButton, exitButton;
 
 	int widthSize = 325,
 		heightSize = 247;
@@ -58,6 +58,13 @@ public class MainFrame extends JFrame implements ActionListener, ComponentListen
 
 		// Change icon buttons
 		JPanel changeIconPanel = setUpPanel(2);
+
+		changeIconButton = new JButton("Change window icon");
+		changeIconPanel.add(changeIconButton);
+
+		resetIconButton = new JButton("Reset window icon");
+		changeIconPanel.add(resetIconButton);
+
 		changeIconPanel.add(changeWindowTitle);
 
 		// Change window title label
