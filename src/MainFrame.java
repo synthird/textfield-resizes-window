@@ -125,6 +125,16 @@ public class MainFrame extends JFrame implements ActionListener, ComponentListen
 		this.setSize(widthSize, heightSize);
 	}
 
+	private void setDefaultIconTheme() {
+		if (customIconSelected == false) {
+			if (!FlatLaf.isLafDark()) {
+				this.setIconImage(lightModeIcon);
+			} else {
+				this.setIconImage(darkModeIcon);
+			}
+		}
+	}
+
 	// Setting up GUIs that have the same properties
 
 	private JSpinner setUpSpinner(JPanel panel, int initialValue) {
@@ -156,16 +166,6 @@ public class MainFrame extends JFrame implements ActionListener, ComponentListen
 		panel.setLayout(flowLayout);
 		this.add(panel);
 		return panel;
-	}
-
-	private void setDefaultIconTheme() {
-		if (customIconSelected == false) {
-			if (!FlatLaf.isLafDark()) {
-				this.setIconImage(lightModeIcon);
-			} else {
-				this.setIconImage(darkModeIcon);
-			}
-		}
 	}
 
 	// Interface methods
