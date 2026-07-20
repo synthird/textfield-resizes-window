@@ -28,7 +28,7 @@ You can download the latest version in the [releases page](https://github.com/Sy
 
 ### Opening the jar file (Any operating system)
 
-1. You need a JDK installed on your device to open the jar file. Here are a couple ones to choose:
+1. You need a JDK or JRE installed on your device to open the jar file. Here are a couple ones to choose:
     
     - [Amazon Correto](https://aws.amazon.com/corretto/)
     - [Azul Zulu](https://www.azul.com/downloads/?package=jdk#zulu)
