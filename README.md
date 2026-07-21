@@ -40,7 +40,7 @@ You can download the latest version in the [releases page](https://github.com/Sy
     - [Red Hat's openJDK](https://developers.redhat.com/products/openjdk/download)
     - [SapMachine](https://sapmachine.io/)
 
-2. Once you installed a JDK, download and unzip the zip folder called ```textfield-resizes-window.zip```.
+2. Once you installed a JDK or JRE, download and unzip the zip folder called ```textfield-resizes-window.zip```.
 3. Open the jar file in the unzipped folder.
 
 ## Note for downloading this repository
