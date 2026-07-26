@@ -31,8 +31,8 @@ public class MainFrame extends JFrame implements ActionListener, ComponentListen
 	boolean customIconSelected = false;
 
 	// Default icon
-	Image darkModeIcon = new ImageIcon("DarkModeIcon.png").getImage(),
-		lightModeIcon = new ImageIcon("LightModeIcon.png").getImage();
+	Image darkModeIcon = new ImageIcon("icons/DarkModeIcon.png").getImage(),
+		lightModeIcon = new ImageIcon("icons/LightModeIcon.png").getImage();
 
 	FlowLayout flowLayout = new FlowLayout(FlowLayout.LEFT);
 
