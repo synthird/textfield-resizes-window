@@ -45,7 +45,7 @@ You can download the latest version in the [releases page](https://github.com/Sy
 
 ## Note for downloading this repository
 
-If you want to download the source code of this repository, you should download [FlatLaf](https://www.formdev.com/flatlaf/). (**Reccommended:** Use v3.7 or up.)
+If you want to download and run the source code of this repository, you should download [FlatLaf](https://www.formdev.com/flatlaf/). (**Reccommended:** Use v3.7 or up.)
 
 1. After downloading the source code, create a new folder called ```lib``` in the root directory of it.
 2. Download the [FlatLaf jar file library](https://central.sonatype.com/artifact/com.formdev/flatlaf/overview).
