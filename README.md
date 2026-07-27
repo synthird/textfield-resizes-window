@@ -53,6 +53,13 @@ If you want to download and run the source code of this repository, you should d
 
 ![The FlatLaf library in the lib folder.](https://github.com/user-attachments/assets/f721eda5-e0a4-4d9b-b3ed-556846c81b10)
 
+4. Go into your downloaded ```textfield-resizes-window``` folder in the terminal.
+5. Run in the terminal:
+
+```bash
+java -cp lib/flatlaf-FLATLAF-VERSION-NUMBER.jar src/*.java
+```
+
 ## License
 
 This repository contains the MIT license. You must give credit if you are going to use its source code.
