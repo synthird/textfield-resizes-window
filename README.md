@@ -43,7 +43,7 @@ You can download the latest version in the [releases page](https://github.com/Sy
 2. Once you installed a JDK or JRE, download and unzip the zip folder called ```textfield-resizes-window.zip```.
 3. Open the jar file in the unzipped folder.
 
-## Note for downloading this repository
+## Running the source code
 
 If you want to download and run the source code of this repository, you should download [FlatLaf](https://www.formdev.com/flatlaf/). (**Reccommended:** Use v3.7 or up.)
 
