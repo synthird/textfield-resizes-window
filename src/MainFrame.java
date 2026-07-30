@@ -201,6 +201,7 @@ public class MainFrame extends JFrame implements ActionListener, ComponentListen
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		// Buttons and change window title textfield
 		Object source = e.getSource();
 
 		if (source == resizeButton) {
@@ -208,7 +209,7 @@ public class MainFrame extends JFrame implements ActionListener, ComponentListen
 		} else if (source == resizable) {
 			this.setResizable(!this.isResizable());
 		} else if (source == darkMode) {
-			// Change to light/dark mode.
+			// Change to light/dark mode
 
 			if (!FlatLaf.isLafDark()) {
 				FlatDarkLaf.setup();
@@ -219,7 +220,7 @@ public class MainFrame extends JFrame implements ActionListener, ComponentListen
 			setDefaultIconTheme();
 			FlatLaf.updateUI();
 		} else if (source == changeIconButton) {
-			// Choose a custom icon.
+			// Choose a custom icon
 			int hasChosenIcon = fileChooser.showOpenDialog(this);
 
 			if (hasChosenIcon == SystemFileChooser.APPROVE_OPTION) {
@@ -227,7 +228,7 @@ public class MainFrame extends JFrame implements ActionListener, ComponentListen
 				this.setIconImage(new ImageIcon(fileChooser.getSelectedFile().getAbsolutePath()).getImage());
 			}
 		} else if (source == resetIconButton) {
-			// Reset the custom icon to default one.
+			// Reset the custom icon to default one
 			customIconSelected = false;
 			setDefaultIconTheme();
 		} else if (source == exitButton) {
