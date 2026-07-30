@@ -202,11 +202,7 @@ public class MainFrame extends JFrame implements ActionListener, ComponentListen
 
 			if (hasChosenIcon == SystemFileChooser.APPROVE_OPTION) {
 				customIconSelected = true;
-
-				String iconPath = fileChooser.getSelectedFile().getAbsolutePath();
-				Image customIcon = new ImageIcon(iconPath).getImage();
-
-				this.setIconImage(customIcon);
+				this.setIconImage(new ImageIcon(fileChooser.getSelectedFile().getAbsolutePath()).getImage());
 			}
 		} else if (source == resetIconButton) {
 			// Reset the custom icon to default one.
