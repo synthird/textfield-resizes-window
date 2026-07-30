@@ -32,7 +32,7 @@ public class MainFrame extends JFrame implements ActionListener, ComponentListen
 
 	// Default icon
 	Image darkModeIcon = new ImageIcon("icons/DarkModeIcon.png").getImage(),
-		lightModeIcon = new ImageIcon("icons/LightModeIcon.png").getImage();
+			lightModeIcon = new ImageIcon("icons/LightModeIcon.png").getImage();
 
 	FlowLayout flowLayout = new FlowLayout(FlowLayout.LEFT);
 
@@ -41,19 +41,26 @@ public class MainFrame extends JFrame implements ActionListener, ComponentListen
 	FileNameExtensionFilter iconFileFilter = new FileNameExtensionFilter("png or jpg", "png", "jpg");
 
 	// Textfields
-	JSpinner widthField, heightField;
+	JSpinner widthField,
+			heightField;
+
 	JTextField changeWindowTitle = new JTextField(25);
 
 	// Checkboxes
-	JCheckBox resizable, darkMode;
+	JCheckBox resizable,
+			darkMode;
 
 	// Buttons
 	JPanel buttonPanel;
-	JButton changeIconButton, resetIconButton, resizeButton, exitButton;
+
+	JButton changeIconButton,
+			resetIconButton,
+			resizeButton,
+			exitButton;
 
 	// Default window size
 	int widthSize = 364,
-		heightSize = 283;
+			heightSize = 283;
 
 	public MainFrame() {
 		fileChooser.setFileFilter(iconFileFilter);
@@ -178,7 +185,7 @@ public class MainFrame extends JFrame implements ActionListener, ComponentListen
 			changeWindowSize();
 		} else if (source == resizable) {
 			this.setResizable(!this.isResizable());
-		 } else if (source == darkMode) {
+		} else if (source == darkMode) {
 			// Change to light/dark mode.
 
 			if (!FlatLaf.isLafDark()) {
@@ -188,7 +195,7 @@ public class MainFrame extends JFrame implements ActionListener, ComponentListen
 			}
 
 			setDefaultIconTheme();
-		 	FlatLaf.updateUI();
+			FlatLaf.updateUI();
 		} else if (source == changeIconButton) {
 			// Choose a custom icon.
 			int hasChosenIcon = fileChooser.showOpenDialog(this);
