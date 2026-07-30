@@ -21,7 +21,7 @@ You can download the latest version in the [releases page](https://github.com/Sy
 
 ### Opening the AppImage (Linux only)
 
-1. Download and extract the tar.xz folder called ```linux-textfield-resizes-window```.
+1. Download and extract the tar folder called ```linux-textfield-resizes-window```.
 2. Open the properties of the ```textfield-resizes-window``` AppImage in the extracted folder to make sure it's allowed to run as a program.
 3. Run the AppImage once it's allowed to do so.
 
