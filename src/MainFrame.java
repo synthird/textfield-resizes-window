@@ -7,6 +7,8 @@ import java.awt.event.ComponentEvent;
 import java.awt.event.ComponentListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -26,7 +28,7 @@ import com.formdev.flatlaf.FlatLightLaf;
 import com.formdev.flatlaf.util.SystemFileChooser;
 import com.formdev.flatlaf.util.SystemFileChooser.FileNameExtensionFilter;
 
-public class MainFrame extends JFrame implements ActionListener, ComponentListener, ChangeListener, KeyListener {
+public class MainFrame extends JFrame implements ActionListener, ComponentListener, ChangeListener, KeyListener, MouseListener {
 	String originalWindowTitle = "Textfield resizes window";
 	boolean customIconSelected = false;
 
@@ -45,6 +47,11 @@ public class MainFrame extends JFrame implements ActionListener, ComponentListen
 			heightField;
 
 	JTextField changeWindowTitle = new JTextField(25);
+
+	// Labels
+	JLabel widthLabel,
+			heightLabel,
+			changeWindowTitleLabel;
 
 	// Checkboxes
 	JCheckBox resizable,
@@ -68,12 +75,12 @@ public class MainFrame extends JFrame implements ActionListener, ComponentListen
 		// Width panel
 		JPanel widthPanel = setUpPanel(0);
 		widthField = setUpSpinner(widthPanel, widthSize);
-		widthPanel.add(new JLabel("px (Width)"));
+		widthLabel = setUpLabel("px (Width)", widthPanel);
 
 		// Height panel
 		JPanel heightPanel = setUpPanel(1);
 		heightField = setUpSpinner(heightPanel, heightSize);
-		heightPanel.add(new JLabel("px (Height)"));
+		heightLabel = setUpLabel("px (Height)", heightPanel);
 
 		// Change icon buttons
 		JPanel changeIconPanel = setUpPanel(2);
@@ -87,7 +94,7 @@ public class MainFrame extends JFrame implements ActionListener, ComponentListen
 		changeIconPanel.add(changeWindowTitle);
 
 		// Change window title label
-		setUpPanel(3).add(new JLabel("Change the window title"));
+		changeWindowTitleLabel = setUpLabel("Change the window title", setUpPanel(3));
 
 		// Change window title textfield
 		JPanel changeWindowTitlePanel = setUpPanel(4);
@@ -142,6 +149,14 @@ public class MainFrame extends JFrame implements ActionListener, ComponentListen
 		}
 	}
 
+	private void focusTextfield(JTextField textField) {
+		textField.requestFocusInWindow();
+	}
+
+	private void focusTextfield(JSpinner textField) {
+		textField.requestFocusInWindow();
+	}
+
 	// Setting up GUIs that have the same properties
 
 	private JSpinner setUpSpinner(JPanel panel, int initialValue) {
@@ -158,6 +173,13 @@ public class MainFrame extends JFrame implements ActionListener, ComponentListen
 		checkbox.setOpaque(false);
 		checkbox.addActionListener(this);
 		return checkbox;
+	}
+
+	private JLabel setUpLabel(String text, JPanel panel) {
+		JLabel label = new JLabel(text);
+		label.addMouseListener(this);
+		panel.add(label);
+		return label;
 	}
 
 	private JButton setUpButton(String text) {
@@ -179,6 +201,7 @@ public class MainFrame extends JFrame implements ActionListener, ComponentListen
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		// Buttons and change window title textfield
 		Object source = e.getSource();
 
 		if (source == resizeButton) {
@@ -186,7 +209,7 @@ public class MainFrame extends JFrame implements ActionListener, ComponentListen
 		} else if (source == resizable) {
 			this.setResizable(!this.isResizable());
 		} else if (source == darkMode) {
-			// Change to light/dark mode.
+			// Change to light/dark mode
 
 			if (!FlatLaf.isLafDark()) {
 				FlatDarkLaf.setup();
@@ -197,7 +220,7 @@ public class MainFrame extends JFrame implements ActionListener, ComponentListen
 			setDefaultIconTheme();
 			FlatLaf.updateUI();
 		} else if (source == changeIconButton) {
-			// Choose a custom icon.
+			// Choose a custom icon
 			int hasChosenIcon = fileChooser.showOpenDialog(this);
 
 			if (hasChosenIcon == SystemFileChooser.APPROVE_OPTION) {
@@ -205,7 +228,7 @@ public class MainFrame extends JFrame implements ActionListener, ComponentListen
 				this.setIconImage(new ImageIcon(fileChooser.getSelectedFile().getAbsolutePath()).getImage());
 			}
 		} else if (source == resetIconButton) {
-			// Reset the custom icon to default one.
+			// Reset the custom icon to default one
 			customIconSelected = false;
 			setDefaultIconTheme();
 		} else if (source == exitButton) {
@@ -263,5 +286,35 @@ public class MainFrame extends JFrame implements ActionListener, ComponentListen
 		if (e.getKeyCode() == 10) {
 			changeWindowSize();
 		}
+	}
+
+	@Override
+	public void mouseClicked(MouseEvent e) {
+		// Focus on a textfield once its label is clicked
+		Object source = e.getSource();
+		
+		if (source == widthLabel) {
+			focusTextfield(widthField);
+		} else if (source == heightLabel) {
+			focusTextfield(heightField);
+		} else if (source == changeWindowTitleLabel) {
+			focusTextfield(changeWindowTitle);
+		}
+	}
+
+	@Override
+	public void mousePressed(MouseEvent e) {
+	}
+
+	@Override
+	public void mouseReleased(MouseEvent e) {
+	}
+
+	@Override
+	public void mouseEntered(MouseEvent e) {
+	}
+
+	@Override
+	public void mouseExited(MouseEvent e) {
 	}
 }
