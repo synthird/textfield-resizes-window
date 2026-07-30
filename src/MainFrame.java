@@ -289,7 +289,7 @@ public class MainFrame extends JFrame implements ActionListener, ComponentListen
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		// JLabels
+		// Focus on a textfield once its label is clicked
 		Object source = e.getSource();
 		
 		if (source == widthLabel) {
