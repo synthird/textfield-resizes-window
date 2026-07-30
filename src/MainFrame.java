@@ -94,8 +94,7 @@ public class MainFrame extends JFrame implements ActionListener, ComponentListen
 		changeIconPanel.add(changeWindowTitle);
 
 		// Change window title label
-		JPanel changeWindowTitleLabelPanel = setUpPanel(3);
-		changeWindowTitleLabel = setUpLabel("Change the window title", changeWindowTitleLabelPanel);
+		changeWindowTitleLabel = setUpLabel("Change the window title", setUpPanel(3));
 
 		// Change window title textfield
 		JPanel changeWindowTitlePanel = setUpPanel(4);
