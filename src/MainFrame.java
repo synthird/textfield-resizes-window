@@ -75,19 +75,12 @@ public class MainFrame extends JFrame implements ActionListener, ComponentListen
 		// Width panel
 		JPanel widthPanel = setUpPanel(0);
 		widthField = setUpSpinner(widthPanel, widthSize);
-
 		widthLabel = setUpLabel("px (Width)", widthPanel);
-		widthLabel.addMouseListener(this);
-
-		widthPanel.add(widthLabel);
 
 		// Height panel
 		JPanel heightPanel = setUpPanel(1);
 		heightField = setUpSpinner(heightPanel, heightSize);
-
 		heightLabel = setUpLabel("px (Height)", heightPanel);
-
-		heightPanel.add(heightLabel);
 
 		// Change icon buttons
 		JPanel changeIconPanel = setUpPanel(2);
@@ -103,7 +96,6 @@ public class MainFrame extends JFrame implements ActionListener, ComponentListen
 		// Change window title label
 		JPanel changeWindowTitleLabelPanel = setUpPanel(3);
 		changeWindowTitleLabel = setUpLabel("Change the window title", changeWindowTitleLabelPanel);
-		changeWindowTitleLabelPanel.add(changeWindowTitleLabel);
 
 		// Change window title textfield
 		JPanel changeWindowTitlePanel = setUpPanel(4);
