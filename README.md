@@ -56,7 +56,7 @@ If you want to download and run the source code of this repository, you should d
 5. Run in the terminal:
 
 ```bash
-java -cp lib/flatlaf-[ENTER_YOUR_VERSION_NUMBER_HERE_AND_REMOVE_BRACKETS].jar src/*.java
+java -cp lib/*.jar src/*.java
 ```
 
 ## License
