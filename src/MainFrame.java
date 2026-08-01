@@ -88,7 +88,7 @@ public class MainFrame extends JFrame implements ActionListener, ComponentListen
 		resetIconButton = setUpButton("Reset window icon", changeIconPanel);
 
 		// Change window title label
-		changeWindowTitleLabel = setUpLabel("Change the window title", setUpPanel(3));
+		changeWindowTitleLabel = setUpLabel("Change window title", setUpPanel(3));
 
 		// Change window title textfield
 		JPanel changeWindowTitlePanel = setUpPanel(4);
