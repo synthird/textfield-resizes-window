@@ -97,7 +97,6 @@ public class MainFrame extends JFrame implements ActionListener, ComponentListen
 		changeWindowTitle = new JTextField(25);
 		changeWindowTitle.addKeyListener(this);
 
-		changeIconPanel.add(changeWindowTitle);
 		changeWindowTitlePanel.add(changeWindowTitle);
 
 		// Resizable checkbox
