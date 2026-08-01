@@ -289,7 +289,7 @@ public class MainFrame extends JFrame implements ActionListener, ComponentListen
 	public void mouseClicked(MouseEvent e) {
 		// Focus on a textfield once its label is clicked
 		Object source = e.getSource();
-		
+
 		if (source == widthLabel) {
 			focusTextfield(widthField);
 		} else if (source == heightLabel) {
