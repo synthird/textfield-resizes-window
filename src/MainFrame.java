@@ -84,12 +84,8 @@ public class MainFrame extends JFrame implements ActionListener, ComponentListen
 
 		// Change icon buttons
 		JPanel changeIconPanel = setUpPanel(2);
-
-		changeIconButton = setUpButton("Change window icon");
-		changeIconPanel.add(changeIconButton);
-
-		resetIconButton = setUpButton("Reset window icon");
-		changeIconPanel.add(resetIconButton);
+		changeIconButton = setUpButton("Change window icon", changeIconPanel);
+		resetIconButton = setUpButton("Reset window icon", changeIconPanel);
 
 		// Change window title label
 		changeWindowTitleLabel = setUpLabel("Change the window title", setUpPanel(3));
@@ -120,11 +116,8 @@ public class MainFrame extends JFrame implements ActionListener, ComponentListen
 		bottomButtonsPanel = setUpPanel(7);
 		bottomButtonsPanel.setLocation(bottomButtonsPanel.getX(), bottomButtonsPanel.getY() - 35);
 
-		resizeButton = setUpButton("Resize");
-		bottomButtonsPanel.add(resizeButton);
-
-		exitButton = setUpButton("Exit");
-		bottomButtonsPanel.add(exitButton);
+		resizeButton = setUpButton("Resize", bottomButtonsPanel);
+		exitButton = setUpButton("Exit", bottomButtonsPanel);
 
 		// Window setup
 		this.setTitle(originalWindowTitle);
@@ -184,9 +177,10 @@ public class MainFrame extends JFrame implements ActionListener, ComponentListen
 		return label;
 	}
 
-	private JButton setUpButton(String text) {
+	private JButton setUpButton(String text, JPanel buttonPanel) {
 		JButton button = new JButton(text);
 		button.addActionListener(this);
+		buttonPanel.add(button);
 		return button;
 	}
 
