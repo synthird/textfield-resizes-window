@@ -46,7 +46,7 @@ public class MainFrame extends JFrame implements ActionListener, ComponentListen
 	JSpinner widthField,
 			heightField;
 
-	JTextField changeWindowTitle = new JTextField(25);
+	JTextField changeWindowTitle;
 
 	// Labels
 	JLabel widthLabel,
@@ -91,15 +91,17 @@ public class MainFrame extends JFrame implements ActionListener, ComponentListen
 		resetIconButton = setUpButton("Reset window icon");
 		changeIconPanel.add(resetIconButton);
 
-		changeIconPanel.add(changeWindowTitle);
-
 		// Change window title label
 		changeWindowTitleLabel = setUpLabel("Change the window title", setUpPanel(3));
 
 		// Change window title textfield
 		JPanel changeWindowTitlePanel = setUpPanel(4);
 		changeWindowTitlePanel.setLocation(changeWindowTitlePanel.getX(), changeWindowTitlePanel.getY() - 15);
+
+		changeWindowTitle = new JTextField(25);
 		changeWindowTitle.addKeyListener(this);
+
+		changeIconPanel.add(changeWindowTitle);
 		changeWindowTitlePanel.add(changeWindowTitle);
 
 		// Resizable checkbox
