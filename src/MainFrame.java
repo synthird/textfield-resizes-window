@@ -58,7 +58,7 @@ public class MainFrame extends JFrame implements ActionListener, ComponentListen
 			darkMode;
 
 	// Buttons
-	JPanel buttonPanel;
+	JPanel bottomButtonsPanel;
 
 	JButton changeIconButton,
 			resetIconButton,
@@ -117,14 +117,14 @@ public class MainFrame extends JFrame implements ActionListener, ComponentListen
 		darkModePanel.add(darkMode);
 
 		// Resize & exit buttons
-		buttonPanel = setUpPanel(7);
-		buttonPanel.setLocation(buttonPanel.getX(), buttonPanel.getY() - 35);
+		bottomButtonsPanel = setUpPanel(7);
+		bottomButtonsPanel.setLocation(bottomButtonsPanel.getX(), bottomButtonsPanel.getY() - 35);
 
 		resizeButton = setUpButton("Resize");
-		buttonPanel.add(resizeButton);
+		bottomButtonsPanel.add(resizeButton);
 
 		exitButton = setUpButton("Exit");
-		buttonPanel.add(exitButton);
+		bottomButtonsPanel.add(exitButton);
 
 		// Window setup
 		this.setTitle(originalWindowTitle);
