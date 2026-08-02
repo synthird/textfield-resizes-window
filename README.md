@@ -11,8 +11,6 @@ Resize a GUI window using textfields/textboxes.
 
 ## Download/Installation
 
-You can download the latest version in the [releases page](https://github.com/Synthird/textfield-resizes-window/releases/latest).
-
 ### Windows
 
 1. Download the ```exe``` file installer in the [releases page](https://github.com/Synthird/textfield-resizes-window/releases/latest).
