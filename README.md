@@ -7,7 +7,7 @@ Resize a GUI window using textfields/textboxes.
 ## Third-party libraries used
 
 - [FlatLaf](https://formdev.com/flatlaf/)
-- [Packr](https://github.com/libgdx/packr)
+- [Packr](https://github.com/libgdx/packr) (For v1.5.0 and v1.6.0)
 
 ## Download/Installation
 
