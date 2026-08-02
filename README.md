@@ -13,7 +13,7 @@ Resize a GUI window using textfields/textboxes.
 
 You can download the latest version in the [releases page](https://github.com/Synthird/textfield-resizes-window/releases/latest).
 
-### Downloading via exe (Windows only)
+### Windows
 
 1. Download the exe file in the [releases page](https://github.com/Synthird/textfield-resizes-window/releases/latest).
 2. Run the exe file and proceed with installation.
@@ -21,7 +21,9 @@ You can download the latest version in the [releases page](https://github.com/Sy
 - If you get a message saying that the exe installer is malicious, click more info and the run anyway button.
   - The exe is not a virus. So, it's safe to install.
 
-### Downloading via rpm (Linux distributions that support rpm packages only)
+### Linux
+
+#### Distributions that support rpm packages
 
 1. Download the rpm file in the [releases page](https://github.com/Synthird/textfield-resizes-window/releases/latest).
 2. Use your package manager on the rpm file to install.
@@ -34,7 +36,7 @@ sudo dnf install ./textfield-resizes-window-1.7.0-1.x86_64.rpm
 # This command only works if you're in the same folder as the rpm file.
 ```
 
-### Opening the jar file (Any operating system)
+### Any operating system (Opening the jar file)
 
 1. You need a JDK or JRE installed on your device to open the jar file. Here are a couple ones to choose:
     
