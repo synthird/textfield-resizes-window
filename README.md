@@ -15,9 +15,8 @@ You can download the latest version in the [releases page](https://github.com/Sy
 
 ### Opening the exe (Windows only)
 
-1. Download and unzip the zip folder called ```windows-textfield-resizes-window.zip```.
-2. Open the exe file in the unzipped folder.
-3. If you get a pop-up saying the exe might be a virus, just run it anyway.
+1. Download the exe file in the [releases page](https://github.com/Synthird/textfield-resizes-window/releases/latest).
+2. Run the exe file and proceed with installation.
 
 ### Opening the AppImage (Linux only)
 
