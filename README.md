@@ -21,11 +21,18 @@ You can download the latest version in the [releases page](https://github.com/Sy
 - If you get a message saying that the exe installer is malicious, click more info and the run anyway button.
   - The exe is not a virus. So, it's safe to install.
 
-### Downloading via rpm (Linux only)
+### Downloading via rpm (Linux distributions that support rpm packages only)
 
-1. Download and extract the tar folder called ```linux-textfield-resizes-window```.
-2. Open the properties of the ```textfield-resizes-window``` AppImage in the extracted folder to make sure it's allowed to run as a program.
-3. Run the AppImage once it's allowed to do so.
+1. Download the rpm file in the [releases page](https://github.com/Synthird/textfield-resizes-window/releases/latest).
+2. Use your package manager on the rpm file to install.
+
+For e.g: If your distribution uses the dnf package manager, you type this in the terminal:
+
+```bash
+sudo dnf install ./textfield-resizes-window-1.7.0-1.x86_64.rpm
+# Replace the "1.7.0" part with the version number you installed. Do not remove the "-1" parts.
+# This command only works if you're in the same folder as the rpm file.
+```
 
 ### Opening the jar file (Any operating system)
 
