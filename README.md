@@ -18,6 +18,9 @@ You can download the latest version in the [releases page](https://github.com/Sy
 1. Download the exe file in the [releases page](https://github.com/Synthird/textfield-resizes-window/releases/latest).
 2. Run the exe file and proceed with installation.
 
+- If you get a message saying that the exe installer is malicious, click more info and the run anyway button.
+  - The exe is not a virus. So, it's safe to install.
+
 ### Opening the AppImage (Linux only)
 
 1. Download and extract the tar folder called ```linux-textfield-resizes-window```.
