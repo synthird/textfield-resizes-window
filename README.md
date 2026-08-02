@@ -32,7 +32,7 @@ For e.g: If your distribution uses the ```dnf``` package manager, you type this 
 
 ```bash
 sudo dnf install ./textfield-resizes-window-1.7.0-1.x86_64.rpm
-# Replace the "1.7.0" part with the version number you installed. Do not remove the "-1" parts.
+# Replace the "1.7.0" part with the version number you installed. Do not remove the "-1" part.
 # This command only works if you're in the same folder as the rpm file.
 ```
 
