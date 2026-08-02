@@ -36,6 +36,19 @@ sudo dnf install textfield-resizes-window-1.7.0-1.x86_64.rpm
 # This command only works if you're in the same folder as the rpm file.
 ```
 
+#### Distributions that support deb packages
+
+1. Download the ```deb``` file in the [releases page](https://github.com/Synthird/textfield-resizes-window/releases/latest).
+2. Use your package manager on the ```deb``` file to install.
+
+For e.g: If your distribution uses the ```apt``` package manager, you type this in the terminal:
+
+```bash
+sudo apt install ./textfield-resizes-window_1.7.0_amd64.deb 
+# Replace the "1.7.0" part with the version number you installed.
+# This command only works if you're in the same folder as the deb file.
+```
+
 ### Any operating system (Opening the jar file)
 
 1. You need a JDK or JRE installed on your device to open the jar file. Here are a couple ones to choose:
