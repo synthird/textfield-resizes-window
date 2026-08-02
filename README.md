@@ -23,7 +23,7 @@ You can download the latest version in the [releases page](https://github.com/Sy
 
 ### Linux
 
-#### Distributions that support rpm packages
+#### Distributions that support rpm packages (E.g: Fedora)
 
 1. Download the ```rpm``` file in the [releases page](https://github.com/Synthird/textfield-resizes-window/releases/latest).
 2. Use your package manager on the ```rpm``` file to install.
@@ -36,7 +36,7 @@ sudo dnf install textfield-resizes-window-1.7.0-1.x86_64.rpm
 # This command only works if you're in the same folder as the rpm file.
 ```
 
-#### Distributions that support deb packages
+#### Distributions that support deb packages (E.g: Debian and Ubuntu)
 
 1. Download the ```deb``` file in the [releases page](https://github.com/Synthird/textfield-resizes-window/releases/latest).
 2. Use your package manager on the ```deb``` file to install.
