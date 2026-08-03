@@ -2,30 +2,52 @@
 
 Resize a GUI window using textfields/textboxes.
 
-![Textfield resizes window dark mode.](https://github.com/user-attachments/assets/388e1256-900b-478a-8dd5-a44e0bb9d031)
+![Textfield resizes window dark mode.](https://github.com/user-attachments/assets/a6373bcb-b61e-4f85-ba77-33a3fe15c9d0)
 
 ## Third-party libraries used
 
 - [FlatLaf](https://formdev.com/flatlaf/)
-- [Packr](https://github.com/libgdx/packr)
+- [Packr](https://github.com/libgdx/packr) (From v1.4.0 to v1.6.0)
 
 ## Download/Installation
 
-You can download the latest version in the [releases page](https://github.com/Synthird/textfield-resizes-window/releases/latest).
+### Windows
 
-### Opening the exe (Windows only)
+1. Download the ```exe``` file installer in the [releases page](https://github.com/Synthird/textfield-resizes-window/releases/latest).
+2. Run the ```exe``` file and proceed with installation.
 
-1. Download and unzip the zip folder called ```windows-textfield-resizes-window.zip```.
-2. Open the exe file in the unzipped folder.
-3. If you get a pop-up saying the exe might be a virus, just run it anyway.
+- If you get a message saying that the ```exe``` installer might be malicious, click more info and the run anyway button.
+  - The ```exe``` is not a virus. So, it's safe to install.
 
-### Opening the AppImage (Linux only)
+### Linux
 
-1. Download and extract the tar folder called ```linux-textfield-resizes-window```.
-2. Open the properties of the ```textfield-resizes-window``` AppImage in the extracted folder to make sure it's allowed to run as a program.
-3. Run the AppImage once it's allowed to do so.
+#### Distributions that support rpm packages (E.g: Fedora)
 
-### Opening the jar file (Any operating system)
+1. Download the ```rpm``` file in the [releases page](https://github.com/Synthird/textfield-resizes-window/releases/latest).
+2. Use your package manager on the ```rpm``` file to install.
+
+For e.g: If your distribution uses the ```dnf``` package manager, you type this in the terminal:
+
+```bash
+sudo dnf install textfield-resizes-window-1.7.0-1.x86_64.rpm
+# Replace the "1.7.0" part with the version number you installed. Do not remove the "-1" part.
+# This command only works if you're in the same folder as the rpm file.
+```
+
+#### Distributions that support deb packages (E.g: Debian and Ubuntu)
+
+1. Download the ```deb``` file in the [releases page](https://github.com/Synthird/textfield-resizes-window/releases/latest).
+2. Use your package manager on the ```deb``` file to install.
+
+For e.g: If your distribution uses the ```apt``` package manager, you type this in the terminal:
+
+```bash
+sudo apt install ./textfield-resizes-window_1.7.0_amd64.deb 
+# Replace the "1.7.0" part with the version number you installed.
+# This command only works if you're in the same folder as the deb file.
+```
+
+### Any operating system (Opening the jar file)
 
 1. You need a JDK or JRE installed on your device to open the jar file. Here are a couple ones to choose:
     
