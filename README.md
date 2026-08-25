@@ -17,7 +17,7 @@ Resize a GUI window using textfields/textboxes.
 2. Run the ```exe``` file and proceed with installation.
 
 - If you get a message saying that the ```exe``` installer might be malicious, click more info and the run anyway button.
-  - The ```exe``` is not a virus. So, it's safe to install.
+  - The ```exe``` is not malware. So, it's safe to install.
 
 ### Linux
 
