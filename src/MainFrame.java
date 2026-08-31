@@ -36,6 +36,8 @@ public class MainFrame extends JFrame implements ActionListener, ComponentListen
 
 	FlowLayout flowLayout = new FlowLayout(FlowLayout.LEFT);
 
+	String appPath = System.getProperty("jpackage.app-path");
+
 	// File chooser
 	SystemFileChooser fileChooser = new SystemFileChooser();
 	FileNameExtensionFilter iconFileFilter = new FileNameExtensionFilter("png or jpg", "png", "jpg");
@@ -64,7 +66,7 @@ public class MainFrame extends JFrame implements ActionListener, ComponentListen
 			exitButton;
 
 	// Default window size
-	int widthSize = 379,
+	int widthSize = 395,
 			heightSize = 283;
 
 	public MainFrame() {
@@ -117,24 +119,9 @@ public class MainFrame extends JFrame implements ActionListener, ComponentListen
 		exitButton = setUpButton("Exit", bottomButtonsPanel);
 
 		// Window setup
-
-		// Set JFrame icon in linux
-		String appPath = System.getProperty("jpackage.app-path");
-
-		if (appPath != null) {
-			Path installedDir = Paths.get(appPath).getParent().getParent(),
-					iconPath = installedDir.resolve("lib").resolve("app").resolve("icon.png");
-			File iconFile = iconPath.toFile();
-
-			if (iconFile.exists()) {
-				ImageIcon imageIcon = new ImageIcon(iconFile.getAbsolutePath());
-				this.setIconImage(imageIcon.getImage());
-			}
-		}
-
-		// Window title, position, and layout
 		this.setTitle(originalWindowTitle);
 		changeWindowSize();
+		removeOrSetIconToDefault();
 		this.setLayout(null);
 		this.setLocationRelativeTo(null);
 		this.addComponentListener(this);
@@ -144,6 +131,19 @@ public class MainFrame extends JFrame implements ActionListener, ComponentListen
 
 	private void changeWindowSize() {
 		this.setSize(widthSize, heightSize);
+	}
+
+	private void removeOrSetIconToDefault() {
+		if (appPath != null) {
+			Path installedDir = Paths.get(appPath).getParent().getParent(),
+					iconPath = installedDir.resolve("lib").resolve("app").resolve("icon.png");
+			File iconFile = iconPath.toFile();
+			ImageIcon imageIcon = new ImageIcon(iconFile.getAbsolutePath());
+
+			this.setIconImage(imageIcon.getImage());
+		} else {
+			this.setIconImage(null);
+		}
 	}
 
 	private void focusTextfield(JTextField textField) {
@@ -189,7 +189,7 @@ public class MainFrame extends JFrame implements ActionListener, ComponentListen
 	private JPanel setUpPanel(int level) {
 		JPanel panel = new JPanel();
 		panel.setOpaque(false);
-		panel.setBounds(0, 35 * level, 385, 35);
+		panel.setBounds(0, 35 * level, 395, 35);
 		panel.setLayout(flowLayout);
 		this.add(panel);
 		return panel;
@@ -227,7 +227,7 @@ public class MainFrame extends JFrame implements ActionListener, ComponentListen
 		} else if (source == resetIconButton) {
 			// Reset the custom icon to default one
 			customIconSelected = false;
-			this.setIconImage(null);
+			removeOrSetIconToDefault();
 		} else if (source == exitButton) {
 			System.exit(0);
 		}
