@@ -61,7 +61,7 @@ public class MainFrame extends JFrame implements ActionListener, ComponentListen
 			exitButton;
 
 	// Default window size
-	int widthSize = 379,
+	int widthSize = 395,
 			heightSize = 283;
 
 	public MainFrame() {
@@ -170,7 +170,7 @@ public class MainFrame extends JFrame implements ActionListener, ComponentListen
 	private JPanel setUpPanel(int level) {
 		JPanel panel = new JPanel();
 		panel.setOpaque(false);
-		panel.setBounds(0, 35 * level, 385, 35);
+		panel.setBounds(0, 35 * level, 395, 35);
 		panel.setLayout(flowLayout);
 		this.add(panel);
 		return panel;
