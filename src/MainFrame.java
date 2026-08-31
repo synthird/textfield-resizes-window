@@ -8,6 +8,9 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.io.File;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -114,6 +117,22 @@ public class MainFrame extends JFrame implements ActionListener, ComponentListen
 		exitButton = setUpButton("Exit", bottomButtonsPanel);
 
 		// Window setup
+
+		// Set JFrame icon in linux
+		String appPath = System.getProperty("jpackage.app-path");
+
+		if (appPath != null) {
+			Path installedDir = Paths.get(appPath).getParent().getParent(),
+					iconPath = installedDir.resolve("lib").resolve("app").resolve("icon.png");
+			File iconFile = iconPath.toFile();
+
+			if (iconFile.exists()) {
+				ImageIcon imageIcon = new ImageIcon(iconFile.getAbsolutePath());
+				this.setIconImage(imageIcon.getImage());
+			}
+		}
+
+		// Window title, position, and layout
 		this.setTitle(originalWindowTitle);
 		changeWindowSize();
 		this.setLayout(null);
