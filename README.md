@@ -73,7 +73,7 @@ If you want to download and run the source code of this repository, you should d
 2. Download the [FlatLaf jar file library](https://central.sonatype.com/artifact/com.formdev/flatlaf/overview).
 3. Place the library into the lib folder.
 
-![The FlatLaf library in the lib folder.](https://github.com/user-attachments/assets/f721eda5-e0a4-4d9b-b3ed-556846c81b10)
+![The FlatLaf library in the lib folder.](https://github.com/user-attachments/assets/3c530eda-0855-4f81-a46d-038373bc1af0)
 
 4. Go into your downloaded ```textfield-resizes-window``` folder in the terminal.
 5. Run in the terminal:
