@@ -1,0 +1,10 @@
+--input .
+-n "Textfield resizes window"
+--app-version 1.8.0
+-t exe
+--vendor Synthird
+--icon icon.ico
+--win-dir-chooser
+--win-shortcut
+--win-menu
+--main-jar textfield-resizes-window.jar

@@ -1,0 +1,8 @@
+--input .
+-n "Textfield resizes window"
+--app-version 1.8.0
+-t deb
+--vendor Synthird
+--icon icon.png
+--main-jar textfield-resizes-window.jar
+--linux-shortcut
