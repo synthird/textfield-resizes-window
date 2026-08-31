@@ -1,6 +1,5 @@
 import java.awt.Dimension;
 import java.awt.FlowLayout;
-import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ComponentEvent;
@@ -31,10 +30,6 @@ import com.formdev.flatlaf.util.SystemFileChooser.FileNameExtensionFilter;
 public class MainFrame extends JFrame implements ActionListener, ComponentListener, ChangeListener, KeyListener, MouseListener {
 	String originalWindowTitle = "Textfield resizes window";
 	boolean customIconSelected = false;
-
-	// Default icon
-	Image darkModeIcon = new ImageIcon("icons/DarkModeIcon.png").getImage(),
-			lightModeIcon = new ImageIcon("icons/LightModeIcon.png").getImage();
 
 	FlowLayout flowLayout = new FlowLayout(FlowLayout.LEFT);
 
@@ -120,7 +115,6 @@ public class MainFrame extends JFrame implements ActionListener, ComponentListen
 
 		// Window setup
 		this.setTitle(originalWindowTitle);
-		this.setIconImage(darkModeIcon);
 		changeWindowSize();
 		this.setLayout(null);
 		this.setLocationRelativeTo(null);
@@ -131,16 +125,6 @@ public class MainFrame extends JFrame implements ActionListener, ComponentListen
 
 	private void changeWindowSize() {
 		this.setSize(widthSize, heightSize);
-	}
-
-	private void setDefaultIconTheme() {
-		if (!customIconSelected) {
-			if (!FlatLaf.isLafDark()) {
-				this.setIconImage(lightModeIcon);
-			} else {
-				this.setIconImage(darkModeIcon);
-			}
-		}
 	}
 
 	private void focusTextfield(JTextField textField) {
@@ -212,7 +196,6 @@ public class MainFrame extends JFrame implements ActionListener, ComponentListen
 				FlatLightLaf.setup();
 			}
 
-			setDefaultIconTheme();
 			FlatLaf.updateUI();
 		} else if (source == changeIconButton) {
 			// Choose a custom icon
@@ -225,7 +208,7 @@ public class MainFrame extends JFrame implements ActionListener, ComponentListen
 		} else if (source == resetIconButton) {
 			// Reset the custom icon to default one
 			customIconSelected = false;
-			setDefaultIconTheme();
+			this.setIconImage(null);
 		} else if (source == exitButton) {
 			System.exit(0);
 		}
