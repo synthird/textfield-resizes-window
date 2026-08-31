@@ -62,8 +62,8 @@ sudo apt install ./textfield-resizes-window_1.7.1_amd64.deb
     - [Red Hat's openJDK](https://developers.redhat.com/products/openjdk/download)
     - [SapMachine](https://sapmachine.io/)
 
-2. Once you installed a JDK or JRE, download and unzip the zip folder called ```textfield-resizes-window.zip```.
-3. Open the jar file in the unzipped folder.
+2. Once you installed a JDK or JRE, download the ```jar``` file from the [releases page](https://github.com/Synthird/textfield-resizes-window/releases/latest).
+3. Execute the jar file using your JDK or JRE.
 
 ## Running the source code
 
