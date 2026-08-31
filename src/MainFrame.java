@@ -61,7 +61,7 @@ public class MainFrame extends JFrame implements ActionListener, ComponentListen
 			exitButton;
 
 	// Default window size
-	int widthSize = 364,
+	int widthSize = 379,
 			heightSize = 283;
 
 	public MainFrame() {
