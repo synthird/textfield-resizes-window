@@ -2,7 +2,7 @@
 
 Resize a GUI window using textfields/textboxes.
 
-![Textfield resizes window dark mode.](https://github.com/user-attachments/assets/a6373bcb-b61e-4f85-ba77-33a3fe15c9d0)
+![Textfield resizes window dark mode.](https://github.com/user-attachments/assets/b6eedaee-a697-4a74-a41a-6f61c1b34ff9)
 
 ## Third-party libraries used
 
@@ -29,9 +29,9 @@ Resize a GUI window using textfields/textboxes.
 For e.g: If your distribution uses the ```dnf``` package manager, you type this in the terminal:
 
 ```bash
-sudo dnf install textfield-resizes-window-1.7.0-1.x86_64.rpm
-# Or: sudo dnf install ./textfield-resizes-window-1.7.0-1.x86_64.rpm
-# Replace the "1.7.0" part with the version number you installed. Do not remove the "-1" part at the end.
+sudo dnf install textfield-resizes-window-1.8.0-1.x86_64.rpm
+# Or: sudo dnf install ./textfield-resizes-window-1.8.0-1.x86_64.rpm
+# Replace the "1.8.0" part with the version number you installed. Do not remove the "-1" part at the end.
 # Both the "use ./" and "don't use ./" commands only work if you're in the same folder as the rpm file.
 ```
 
@@ -43,8 +43,8 @@ sudo dnf install textfield-resizes-window-1.7.0-1.x86_64.rpm
 For e.g: If your distribution uses the ```apt``` package manager, you type this in the terminal:
 
 ```bash
-sudo apt install ./textfield-resizes-window_1.7.0_amd64.deb 
-# Replace the "1.7.0" part with the version number you installed.
+sudo apt install ./textfield-resizes-window_1.8.0_amd64.deb 
+# Replace the "1.8.0" part with the version number you installed.
 # This command only works if you're in the same folder as the deb file.
 ```
 
@@ -62,8 +62,8 @@ sudo apt install ./textfield-resizes-window_1.7.0_amd64.deb
     - [Red Hat's openJDK](https://developers.redhat.com/products/openjdk/download)
     - [SapMachine](https://sapmachine.io/)
 
-2. Once you installed a JDK or JRE, download and unzip the zip folder called ```textfield-resizes-window.zip```.
-3. Open the jar file in the unzipped folder.
+2. Once you installed a JDK or JRE, download the ```jar``` file from the [releases page](https://github.com/Synthird/textfield-resizes-window/releases/latest).
+3. Execute the jar file using your JDK or JRE.
 
 ## Running the source code
 
@@ -73,7 +73,7 @@ If you want to download and run the source code of this repository, you should d
 2. Download the [FlatLaf jar file library](https://central.sonatype.com/artifact/com.formdev/flatlaf/overview).
 3. Place the library into the lib folder.
 
-![The FlatLaf library in the lib folder.](https://github.com/user-attachments/assets/f721eda5-e0a4-4d9b-b3ed-556846c81b10)
+![The FlatLaf library in the lib folder.](https://github.com/user-attachments/assets/3c530eda-0855-4f81-a46d-038373bc1af0)
 
 4. Go into your downloaded ```textfield-resizes-window``` folder in the terminal.
 5. Run in the terminal:
