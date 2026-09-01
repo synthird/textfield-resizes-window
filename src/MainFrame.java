@@ -8,6 +8,9 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.io.File;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -32,6 +35,8 @@ public class MainFrame extends JFrame implements ActionListener, ComponentListen
 	boolean customIconSelected = false;
 
 	FlowLayout flowLayout = new FlowLayout(FlowLayout.LEFT);
+
+	String appPath = System.getProperty("jpackage.app-path");
 
 	// File chooser
 	SystemFileChooser fileChooser = new SystemFileChooser();
@@ -116,6 +121,7 @@ public class MainFrame extends JFrame implements ActionListener, ComponentListen
 		// Window setup
 		this.setTitle(originalWindowTitle);
 		changeWindowSize();
+		removeOrSetIconToDefault();
 		this.setLayout(null);
 		this.setLocationRelativeTo(null);
 		this.addComponentListener(this);
@@ -125,6 +131,23 @@ public class MainFrame extends JFrame implements ActionListener, ComponentListen
 
 	private void changeWindowSize() {
 		this.setSize(widthSize, heightSize);
+	}
+
+	private void removeOrSetIconToDefault() {
+		if (appPath != null) {
+			Path installedDir = Paths.get(appPath).getParent().getParent(),
+					iconPath = installedDir.resolve("lib").resolve("app").resolve("icon.png");
+			File iconFile = iconPath.toFile();
+
+			if (iconFile.exists()) {
+				ImageIcon imageIcon = new ImageIcon(iconFile.getAbsolutePath());
+				this.setIconImage(imageIcon.getImage());
+			} else {
+				this.setIconImage(null);
+			}
+		} else {
+			this.setIconImage(null);
+		}
 	}
 
 	private void focusTextfield(JTextField textField) {
@@ -208,7 +231,7 @@ public class MainFrame extends JFrame implements ActionListener, ComponentListen
 		} else if (source == resetIconButton) {
 			// Reset the custom icon to default one
 			customIconSelected = false;
-			this.setIconImage(null);
+			removeOrSetIconToDefault();
 		} else if (source == exitButton) {
 			System.exit(0);
 		}
