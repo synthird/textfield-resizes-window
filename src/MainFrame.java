@@ -138,9 +138,13 @@ public class MainFrame extends JFrame implements ActionListener, ComponentListen
 			Path installedDir = Paths.get(appPath).getParent().getParent(),
 					iconPath = installedDir.resolve("lib").resolve("app").resolve("icon.png");
 			File iconFile = iconPath.toFile();
-			ImageIcon imageIcon = new ImageIcon(iconFile.getAbsolutePath());
 
-			this.setIconImage(imageIcon.getImage());
+			if (iconFile.exists()) {
+				ImageIcon imageIcon = new ImageIcon(iconFile.getAbsolutePath());
+				this.setIconImage(imageIcon.getImage());
+			} else {
+				this.setIconImage(null);
+			}
 		} else {
 			this.setIconImage(null);
 		}
