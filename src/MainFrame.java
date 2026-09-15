@@ -223,7 +223,7 @@ public class MainFrame extends JFrame implements ActionListener, ComponentListen
 			FlatLaf.updateUI();
 		} else if (source == changeIconButton) {
 			// Choose a custom icon
-			int hasChosenIcon = fileChooser.showOpenDialog(this);
+			int hasChosenIcon = fileChooser.showDialog(this, "Choose icon");
 
 			if (hasChosenIcon == SystemFileChooser.APPROVE_OPTION) {
 				customIconSelected = true;
