@@ -70,6 +70,7 @@ public class MainFrame extends JFrame implements ActionListener, ComponentListen
 			heightSize = 283;
 
 	public MainFrame() {
+		fileChooser.putPlatformProperty(SystemFileChooser.WINDOWS_FILE_NAME_LABEL, "Set icon to:");
 		fileChooser.setFileFilter(iconFileFilter);
 
 		// Width panel
