@@ -36,11 +36,9 @@ public class MainFrame extends JFrame implements ActionListener, ComponentListen
 
 	FlowLayout flowLayout = new FlowLayout(FlowLayout.LEFT);
 
-	String appPath = System.getProperty("jpackage.app-path");
-
-	// File chooser
 	SystemFileChooser fileChooser = new SystemFileChooser();
-	FileNameExtensionFilter iconFileFilter = new FileNameExtensionFilter("png or jpg", "png", "jpg");
+
+	String appPath = System.getProperty("jpackage.app-path");
 
 	// Textfields
 	JSpinner widthField,
@@ -74,7 +72,7 @@ public class MainFrame extends JFrame implements ActionListener, ComponentListen
 		fileChooser.setDialogTitle("Set icon");
 		fileChooser.putPlatformProperty(SystemFileChooser.WINDOWS_FILE_NAME_LABEL, "Set icon to:");
 		fileChooser.setApproveButtonText("Choose icon");
-		fileChooser.setFileFilter(iconFileFilter);
+		fileChooser.setFileFilter(new FileNameExtensionFilter("png or jpg", "png", "jpg"));
 
 		// Width panel
 		JPanel widthPanel = setUpPanel(0);
