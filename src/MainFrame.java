@@ -70,6 +70,8 @@ public class MainFrame extends JFrame implements ActionListener, ComponentListen
 			heightSize = 283;
 
 	public MainFrame() {
+		// File chooser
+		fileChooser.setDialogTitle("Set icon");
 		fileChooser.putPlatformProperty(SystemFileChooser.WINDOWS_FILE_NAME_LABEL, "Set icon to:");
 		fileChooser.setApproveButtonText("Choose icon");
 		fileChooser.setFileFilter(iconFileFilter);
