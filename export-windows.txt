@@ -1,7 +1,6 @@
 --input .
 -n "Textfield resizes window"
 --app-version 1.9.0
--t exe
 --vendor Synthird
 --icon icon.ico
 --win-dir-chooser
