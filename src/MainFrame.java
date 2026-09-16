@@ -71,6 +71,7 @@ public class MainFrame extends JFrame implements ActionListener, ComponentListen
 
 	public MainFrame() {
 		fileChooser.putPlatformProperty(SystemFileChooser.WINDOWS_FILE_NAME_LABEL, "Set icon to:");
+		fileChooser.setApproveButtonText("Choose icon");
 		fileChooser.setFileFilter(iconFileFilter);
 
 		// Width panel
@@ -223,7 +224,7 @@ public class MainFrame extends JFrame implements ActionListener, ComponentListen
 			FlatLaf.updateUI();
 		} else if (source == changeIconButton) {
 			// Choose a custom icon
-			int hasChosenIcon = fileChooser.showDialog(this, "Choose icon");
+			int hasChosenIcon = fileChooser.showOpenDialog(this);
 
 			if (hasChosenIcon == SystemFileChooser.APPROVE_OPTION) {
 				customIconSelected = true;
