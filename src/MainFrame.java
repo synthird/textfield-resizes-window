@@ -288,7 +288,7 @@ public class MainFrame extends JFrame implements ActionListener, ComponentListen
 			}
 		}
 
-		if (e.getKeyCode() == 10) {
+		if (e.getKeyCode() == KeyEvent.VK_ENTER) {
 			changeWindowSize();
 		}
 	}
