@@ -34,7 +34,7 @@ sudo dnf install ./textfield-resizes-window-1.8.0-1.x86_64.rpm
 # This command only works if you're in the same folder as the rpm file.
 ```
 
-#### Distributions that support deb packages (E.g: Debian and Ubuntu)
+#### Distributions that support deb packages (E.g: Debian)
 
 1. Download the ```deb``` file in the [releases page](https://github.com/Synthird/textfield-resizes-window/releases/latest).
 2. Use your package manager on the ```deb``` file to install.
