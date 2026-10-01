@@ -1,8 +1,6 @@
 import com.formdev.flatlaf.FlatDarkLaf;
 
-public class App {
-	public static void main(String[] args) {
-		FlatDarkLaf.setup();
-		new MainFrame();
-	}
+void main() {
+	FlatDarkLaf.setup();
+	new MainFrame();
 }
