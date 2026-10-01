@@ -1,5 +1,4 @@
-import java.awt.Dimension;
-import java.awt.FlowLayout;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ComponentEvent;
@@ -8,6 +7,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -29,13 +29,14 @@ import com.formdev.flatlaf.FlatLaf;
 import com.formdev.flatlaf.FlatLightLaf;
 import com.formdev.flatlaf.util.SystemFileChooser;
 import com.formdev.flatlaf.util.SystemFileChooser.FileNameExtensionFilter;
+import com.formdev.flatlaf.util.SystemInfo;
 
 public class MainFrame extends JFrame implements ActionListener, ComponentListener, ChangeListener, KeyListener, MouseListener {
 	String originalWindowTitle = "Textfield resizes window";
 	boolean customIconSelected = false;
 
 	FlowLayout flowLayout = new FlowLayout(FlowLayout.LEFT);
-
+	BufferedImage transparentImage = new BufferedImage(1, 1, BufferedImage.TYPE_INT_ARGB);
 	SystemFileChooser fileChooser = new SystemFileChooser();
 
 	String appPath = System.getProperty("jpackage.app-path");
@@ -152,6 +153,14 @@ public class MainFrame extends JFrame implements ActionListener, ComponentListen
 		}
 	}
 
+	private void setWindowsFileChooserIcon(Image image) {
+		if (SystemInfo.isWindows) {
+			if (this.getIconImage() == null || this.getIconImage() == transparentImage) {
+				this.setIconImage(image);
+			}
+		}
+	}
+
 	private void focusTextfield(JTextField textField) {
 		textField.requestFocusInWindow();
 	}
@@ -224,11 +233,14 @@ public class MainFrame extends JFrame implements ActionListener, ComponentListen
 			FlatLaf.updateUI();
 		} else if (source == changeIconButton) {
 			// Choose a custom icon
+			setWindowsFileChooserIcon(transparentImage);
 			int hasChosenIcon = fileChooser.showOpenDialog(this);
 
 			if (hasChosenIcon == SystemFileChooser.APPROVE_OPTION) {
 				customIconSelected = true;
 				this.setIconImage(new ImageIcon(fileChooser.getSelectedFile().getAbsolutePath()).getImage());
+			} else {
+				setWindowsFileChooserIcon(null);
 			}
 		} else if (source == resetIconButton) {
 			// Reset the custom icon to default one
