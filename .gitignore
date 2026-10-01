@@ -29,6 +29,11 @@ replay_pid*
 
 # End of https://www.toptal.com/developers/gitignore/api/java
 
+# IntelliJ files
+.idea
+out/
+textfield-resizes-window.iml
+
 # Installers
 *.exe
 *.deb
