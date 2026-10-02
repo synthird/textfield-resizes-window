@@ -31,7 +31,6 @@ replay_pid*
 
 # IntelliJ files
 .idea
-out/
 textfield-resizes-window.iml
 
 # Installers
