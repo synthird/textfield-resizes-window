@@ -38,7 +38,7 @@ public class MainFrame extends JFrame implements ActionListener, ComponentListen
 	boolean customIconSelected = false;
 
 	FlowLayout flowLayout = new FlowLayout(FlowLayout.LEFT);
-	BufferedImage transparentImage = new BufferedImage(1, 1, BufferedImage.TYPE_INT_ARGB);
+	BufferedImage transparentIcon = new BufferedImage(1, 1, BufferedImage.TYPE_INT_ARGB);
 	SystemFileChooser fileChooser = new SystemFileChooser();
 
 	String appPath = System.getProperty("jpackage.app-path");
@@ -157,7 +157,7 @@ public class MainFrame extends JFrame implements ActionListener, ComponentListen
 
 	private void setWindowsFileChooserIcon(Image image) {
 		if (SystemInfo.isWindows) {
-			if (this.getIconImage() == null || this.getIconImage() == transparentImage) {
+			if (this.getIconImage() == null || this.getIconImage() == transparentIcon) {
 				this.setIconImage(image);
 			}
 		}
@@ -235,7 +235,7 @@ public class MainFrame extends JFrame implements ActionListener, ComponentListen
 			FlatLaf.updateUI();
 		} else if (source == changeIconButton) {
 			// Choose a custom icon
-			setWindowsFileChooserIcon(transparentImage);
+			setWindowsFileChooserIcon(transparentIcon);
 			int hasChosenIcon = fileChooser.showOpenDialog(this);
 
 			if (hasChosenIcon == SystemFileChooser.APPROVE_OPTION) {
