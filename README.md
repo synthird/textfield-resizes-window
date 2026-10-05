@@ -66,7 +66,7 @@ sudo apt install ./textfield-resizes-window_1.8.0_amd64.deb
 
 ## Running the source code
 
-If you want to run the source code, you should download [FlatLaf](https://www.formdev.com/flatlaf/). (**Reccommended:** v3.7 or up.)
+If you want to run the source code, you should download [FlatLaf](https://formdev.com/flatlaf/). (**Reccommended:** v3.7 or up.)
 
 1. After downloading the source code, create a new folder called ```lib``` in the root directory of it.
 2. Download the [FlatLaf jar file library](https://central.sonatype.com/artifact/com.formdev/flatlaf/overview).
