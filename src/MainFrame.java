@@ -130,7 +130,7 @@ public class MainFrame extends JFrame implements ActionListener, ComponentListen
 		setLayout(null);
 		setLocationRelativeTo(null);
 		addComponentListener(this);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setVisible(true);
 	}
 
