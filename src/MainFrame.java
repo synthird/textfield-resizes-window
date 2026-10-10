@@ -14,15 +14,7 @@ import java.io.File;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JCheckBox;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JSpinner;
-import javax.swing.JTextField;
-import javax.swing.SpinnerNumberModel;
+import javax.swing.*;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
@@ -124,18 +116,18 @@ public class MainFrame extends JFrame implements ActionListener, ComponentListen
 		exitButton = setUpButton("Exit", bottomButtonsPanel);
 
 		// Window setup
-		this.setTitle(originalWindowTitle);
+		setTitle(originalWindowTitle);
 		changeWindowSize();
 		removeOrSetIconToDefault();
-		this.setLayout(null);
-		this.setLocationRelativeTo(null);
-		this.addComponentListener(this);
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.setVisible(true);
+		setLayout(null);
+		setLocationRelativeTo(null);
+		addComponentListener(this);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setVisible(true);
 	}
 
 	private void changeWindowSize() {
-		this.setSize(widthSize, heightSize);
+		setSize(widthSize, heightSize);
 	}
 
 	private void removeOrSetIconToDefault() {
@@ -146,19 +138,19 @@ public class MainFrame extends JFrame implements ActionListener, ComponentListen
 
 			if (iconFile.exists()) {
 				ImageIcon imageIcon = new ImageIcon(iconFile.getAbsolutePath());
-				this.setIconImage(imageIcon.getImage());
+				setIconImage(imageIcon.getImage());
 			} else {
-				this.setIconImage(null);
+				setIconImage(null);
 			}
 		} else {
-			this.setIconImage(null);
+			setIconImage(null);
 		}
 	}
 
 	private void setWindowsFileChooserIcon(Image image) {
 		if (SystemInfo.isWindows) {
-			if (this.getIconImage() == null || this.getIconImage() == transparentIcon) {
-				this.setIconImage(image);
+			if (getIconImage() == null || getIconImage() == transparentIcon) {
+				setIconImage(image);
 			}
 		}
 	}
@@ -208,7 +200,7 @@ public class MainFrame extends JFrame implements ActionListener, ComponentListen
 		panel.setOpaque(false);
 		panel.setBounds(0, 35 * level, 510, 35);
 		panel.setLayout(flowLayout);
-		this.add(panel);
+		add(panel);
 		return panel;
 	}
 
@@ -222,7 +214,7 @@ public class MainFrame extends JFrame implements ActionListener, ComponentListen
 		if (source == resizeButton) {
 			changeWindowSize();
 		} else if (source == resizable) {
-			this.setResizable(!this.isResizable());
+			setResizable(!isResizable());
 		} else if (source == darkMode) {
 			// Change to light/dark mode
 
@@ -240,7 +232,7 @@ public class MainFrame extends JFrame implements ActionListener, ComponentListen
 
 			if (hasChosenIcon == SystemFileChooser.APPROVE_OPTION) {
 				customIconSelected = true;
-				this.setIconImage(new ImageIcon(fileChooser.getSelectedFile().getAbsolutePath()).getImage());
+				setIconImage(new ImageIcon(fileChooser.getSelectedFile().getAbsolutePath()).getImage());
 			} else {
 				setWindowsFileChooserIcon(null);
 			}
@@ -255,8 +247,8 @@ public class MainFrame extends JFrame implements ActionListener, ComponentListen
 
 	@Override
 	public void componentResized(ComponentEvent e) {
-		widthField.setValue(this.getWidth());
-		heightField.setValue(this.getHeight());
+		widthField.setValue(getWidth());
+		heightField.setValue(getHeight());
 	}
 
 	@Override
@@ -296,9 +288,9 @@ public class MainFrame extends JFrame implements ActionListener, ComponentListen
 			String changeWindowTitleText = changeWindowTitle.getText();
 
 			if (changeWindowTitleText.isBlank()) {
-				this.setTitle(originalWindowTitle);
+				setTitle(originalWindowTitle);
 			} else {
-				this.setTitle(changeWindowTitleText);
+				setTitle(changeWindowTitleText);
 			}
 		}
 
