@@ -224,7 +224,6 @@ public class MainFrame extends JFrame implements ActionListener, ComponentListen
 			setResizable(!isResizable());
 		} else if (source == darkMode) {
 			// Change to light/dark mode
-
 			if (!FlatLaf.isLafDark()) {
 				FlatDarkLaf.setup();
 			} else {
