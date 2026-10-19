@@ -88,15 +88,15 @@ public class MainFrame extends JFrame implements ActionListener, ComponentListen
 		heightLabel = setUpLabel("px (Height)", heightPanel);
 
 		if (SystemInfo.isGNOME) {
-			// Remove change icon buttons in Linux GNOME desktop environment
-			setUIAfterChangeIconButtons(2, 3, 4, 5, 6);
+			// Don't create the change icon buttons in Linux GNOME desktop environment
+			setRestUILevels(2, 3, 4, 5, 6);
 		} else {
-			// Change icon buttons
+			// Add the change icon buttons
 			JPanel changeIconPanel = setUpPanel(2);
 			changeIconButton = setUpButton("Set custom window icon", changeIconPanel);
 			resetIconButton = setUpButton("Remove custom window icon", changeIconPanel);
 			// Set up the rest of the UI
-			setUIAfterChangeIconButtons(3, 4, 5, 6, 7);
+			setRestUILevels(3, 4, 5, 6, 7);
 		}
 
 		// Window setup
@@ -110,7 +110,7 @@ public class MainFrame extends JFrame implements ActionListener, ComponentListen
 		setVisible(true);
 	}
 
-	private void setUIAfterChangeIconButtons(int changeTitleLabelLevel, int changeTitlePanelLevel, int resizableLevel, int darkModeLevel, int bottomButtonsLevel) {
+	private void setRestUILevels(int changeTitleLabelLevel, int changeTitlePanelLevel, int resizableLevel, int darkModeLevel, int bottomButtonsLevel) {
 		// Change window title label and textfield
 		changeWindowTitleLabel = setUpLabel("Change window title", setUpPanel(changeTitleLabelLevel));
 
