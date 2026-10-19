@@ -87,15 +87,16 @@ public class MainFrame extends JFrame implements ActionListener, ComponentListen
 		heightField = setUpSpinner(heightPanel, heightSize);
 		heightLabel = setUpLabel("px (Height)", heightPanel);
 
-		// Remove change icon buttons in Linux GNOME desktop environment
-		if (!SystemInfo.isGNOME) {
+		if (SystemInfo.isGNOME) {
+			// Remove change icon buttons in Linux GNOME desktop environment
+			setUIAfterChangeIconButtons(2, 3, 4, 5, 6);
+		} else {
 			// Change icon buttons
 			JPanel changeIconPanel = setUpPanel(2);
 			changeIconButton = setUpButton("Set custom window icon", changeIconPanel);
 			resetIconButton = setUpButton("Remove custom window icon", changeIconPanel);
+			// Set up the rest of the UI
 			setUIAfterChangeIconButtons(3, 4, 5, 6, 7);
-		} else {
-			setUIAfterChangeIconButtons(2, 3, 4, 5, 6);
 		}
 
 		// Window setup
