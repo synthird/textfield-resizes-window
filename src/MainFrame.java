@@ -13,6 +13,7 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -89,14 +90,16 @@ public class MainFrame extends JFrame implements ActionListener, ComponentListen
 
 		if (SystemInfo.isGNOME) {
 			// Don't create the change icon buttons in Linux GNOME desktop environment
-			setRestUILevels(2, 3, 4, 5, 6);
+			for (JPanel panel : setRestUILevels()) {
+				panel.setLocation(panel.getX(), panel.getY() - 35);
+			}
 		} else {
 			// Add the change icon buttons
 			JPanel changeIconPanel = setUpPanel(2);
 			changeIconButton = setUpButton("Set custom window icon", changeIconPanel);
 			resetIconButton = setUpButton("Remove custom window icon", changeIconPanel);
 			// Set up the rest of the UI
-			setRestUILevels(3, 4, 5, 6, 7);
+			setRestUILevels();
 		}
 
 		// Window setup
@@ -110,36 +113,48 @@ public class MainFrame extends JFrame implements ActionListener, ComponentListen
 		setVisible(true);
 	}
 
-	private void setRestUILevels(int changeTitleLabelLevel, int changeTitlePanelLevel, int resizableLevel, int darkModeLevel, int bottomButtonsLevel) {
-		// Change window title label and textfield
-		changeWindowTitleLabel = setUpLabel("Change window title", setUpPanel(changeTitleLabelLevel));
+	private ArrayList<JPanel> setRestUILevels() {
+		ArrayList<JPanel> panels = new ArrayList<>();
 
-		JPanel changeWindowTitlePanel = setUpPanel(changeTitlePanelLevel);
-		changeWindowTitlePanel.setLocation(changeWindowTitlePanel.getX(), changeWindowTitlePanel.getY() - 15);
+		// Change window title label
+		JPanel changeWindowTitleLabelPanel = setUpPanel(3);
+		changeWindowTitleLabel = setUpLabel("Change window title", changeWindowTitleLabelPanel);
+		panels.add(changeWindowTitleLabelPanel);
+
+		// Change window title textfield
+		JPanel changeWindowTitleTextfieldPanel = setUpPanel(4);
+		changeWindowTitleTextfieldPanel.setLocation(changeWindowTitleTextfieldPanel.getX(), changeWindowTitleTextfieldPanel.getY() - 15);
 
 		changeWindowTitle = new JTextField(25);
 		changeWindowTitle.addKeyListener(this);
 
-		changeWindowTitlePanel.add(changeWindowTitle);
+		changeWindowTitleTextfieldPanel.add(changeWindowTitle);
+		panels.add(changeWindowTitleTextfieldPanel);
 
 		// Resizable checkbox
 		resizable = setUpCheckBox("Resize with mouse and maximize/restore button");
-		JPanel resizablePanel = setUpPanel(resizableLevel);
+		JPanel resizablePanel = setUpPanel(5);
 		resizablePanel.setLocation(resizablePanel.getX(), resizablePanel.getY() - 20);
 		resizablePanel.add(resizable);
+		panels.add(resizablePanel);
 
 		// Toggle between light and dark mode
 		darkMode = setUpCheckBox("Dark mode");
-		JPanel darkModePanel = setUpPanel(darkModeLevel);
+		JPanel darkModePanel = setUpPanel(6);
 		darkModePanel.setLocation(darkModePanel.getX(), darkModePanel.getY() - 28);
 		darkModePanel.add(darkMode);
+		panels.add(darkModePanel);
 
 		// Resize & exit buttons
-		bottomButtonsPanel = setUpPanel(bottomButtonsLevel);
+		bottomButtonsPanel = setUpPanel(7);
 		bottomButtonsPanel.setLocation(bottomButtonsPanel.getX(), bottomButtonsPanel.getY() - 35);
 
 		resizeButton = setUpButton("Resize", bottomButtonsPanel);
 		exitButton = setUpButton("Exit", bottomButtonsPanel);
+
+		panels.add(bottomButtonsPanel);
+
+		return panels;
 	}
 
 	private void changeWindowSize() {
