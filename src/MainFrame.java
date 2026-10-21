@@ -36,7 +36,6 @@ import com.formdev.flatlaf.util.SystemInfo;
 
 public class MainFrame extends JFrame implements ActionListener, ComponentListener, ChangeListener, KeyListener, MouseListener {
 	String originalWindowTitle = "Textfield resizes window";
-	boolean customIconSelected = false;
 
 	FlowLayout flowLayout = new FlowLayout(FlowLayout.LEFT);
 	BufferedImage transparentIcon = new BufferedImage(1, 1, BufferedImage.TYPE_INT_ARGB);
@@ -261,14 +260,12 @@ public class MainFrame extends JFrame implements ActionListener, ComponentListen
 			int hasChosenIcon = fileChooser.showOpenDialog(this);
 
 			if (hasChosenIcon == SystemFileChooser.APPROVE_OPTION) {
-				customIconSelected = true;
 				setIconImage(new ImageIcon(fileChooser.getSelectedFile().getAbsolutePath()).getImage());
 			} else {
 				setWindowsFileChooserIcon(null);
 			}
 		} else if (source == resetIconButton) {
 			// Reset the custom icon to default one
-			customIconSelected = false;
 			removeOrSetIconToDefault();
 		} else if (source == exitButton) {
 			System.exit(0);
