@@ -177,7 +177,7 @@ public class MainFrame extends JFrame implements ActionListener, ComponentListen
 		}
 	}
 
-	private void setWindowsFileChooserIcon(Image image) {
+	private void setWindowsIcon(Image image) {
 		if (SystemInfo.isWindows) {
 			if (getIconImage() == null || getIconImage() == transparentIcon) {
 				setIconImage(image);
@@ -256,13 +256,13 @@ public class MainFrame extends JFrame implements ActionListener, ComponentListen
 			FlatLaf.updateUI();
 		} else if (source == changeIconButton) {
 			// Choose a custom icon
-			setWindowsFileChooserIcon(transparentIcon);
+			setWindowsIcon(transparentIcon);
 			int hasChosenIcon = fileChooser.showOpenDialog(this);
 
 			if (hasChosenIcon == SystemFileChooser.APPROVE_OPTION) {
 				setIconImage(new ImageIcon(fileChooser.getSelectedFile().getAbsolutePath()).getImage());
 			} else {
-				setWindowsFileChooserIcon(null);
+				setWindowsIcon(null);
 			}
 		} else if (source == resetIconButton) {
 			// Reset the custom icon to default one
