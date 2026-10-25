@@ -99,12 +99,13 @@ public class MainFrame extends JFrame implements ActionListener, ComponentListen
 			resetIconButton = setUpButton("Remove custom window icon", changeIconPanel);
 			// Set up the rest of the UI
 			setRestUILevels();
+			// Set up the window icon
+			removeOrSetIconToDefault();
 		}
 
 		// Window setup
 		setTitle(originalWindowTitle);
 		changeWindowSize();
-		removeOrSetIconToDefault();
 		setLayout(null);
 		setLocationRelativeTo(null);
 		addComponentListener(this);
