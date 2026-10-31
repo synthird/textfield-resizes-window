@@ -1,3 +1,5 @@
+package io.github.synthird;
+
 import com.formdev.flatlaf.FlatDarkLaf;
 
 public class App {
