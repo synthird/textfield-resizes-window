@@ -4,10 +4,13 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
 import java.awt.event.ComponentListener;
+import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.Image;
@@ -36,7 +39,7 @@ import com.formdev.flatlaf.util.SystemFileChooser;
 import com.formdev.flatlaf.util.SystemFileChooser.FileNameExtensionFilter;
 import com.formdev.flatlaf.util.SystemInfo;
 
-public class MainFrame extends JFrame implements ActionListener, ComponentListener, ChangeListener, KeyListener, MouseListener {
+public class MainFrame extends JFrame {
 	String originalWindowTitle = "Textfield resizes window";
 
 	FlowLayout flowLayout = new FlowLayout(FlowLayout.LEFT);
@@ -51,26 +54,19 @@ public class MainFrame extends JFrame implements ActionListener, ComponentListen
 
 	JTextField changeWindowTitle;
 
-	// Labels
-	JLabel widthLabel,
-			heightLabel,
-			changeWindowTitleLabel;
-
-	// Checkboxes
-	JCheckBox resizable,
-			darkMode;
-
-	// Buttons
-	JPanel bottomButtonsPanel;
-
-	JButton changeIconButton,
-			resetIconButton,
-			resizeButton,
-			exitButton;
-
 	// Default window size
 	int widthSize = 435,
 			heightSize = 283;
+
+	// Change window size when the enter key is pressed
+	KeyAdapter changeWindowSizeOnKeyEnter = new KeyAdapter() {
+		@Override
+		public void keyReleased(KeyEvent e) {
+			if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+				changeWindowSize();
+			}
+		}
+	};
 
 	public MainFrame() {
 		// File chooser
@@ -81,13 +77,33 @@ public class MainFrame extends JFrame implements ActionListener, ComponentListen
 
 		// Width panel
 		JPanel widthPanel = setUpPanel(0);
+
 		widthField = setUpSpinner(widthPanel, widthSize);
-		widthLabel = setUpLabel("px (Width)", widthPanel);
+		widthField.addChangeListener(e -> {
+			widthSize = (int) widthField.getValue();
+		});
+
+		setUpLabel("px (Width)", widthPanel).addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent _) {
+				focusTextfield(widthField);
+			}
+		});
 
 		// Height panel
 		JPanel heightPanel = setUpPanel(1);
+	
 		heightField = setUpSpinner(heightPanel, heightSize);
-		heightLabel = setUpLabel("px (Height)", heightPanel);
+		heightField.addChangeListener(e -> {
+			heightSize = (int) heightField.getValue();
+		});
+	
+		setUpLabel("px (Height)", heightPanel).addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent _) {
+				focusTextfield(heightField);
+			}
+		});
 
 		if (SystemInfo.isGNOME) {
 			// Don't create the change icon buttons in Linux GNOME desktop environment
@@ -97,11 +113,27 @@ public class MainFrame extends JFrame implements ActionListener, ComponentListen
 		} else {
 			// Add the change icon buttons
 			JPanel changeIconPanel = setUpPanel(2);
-			changeIconButton = setUpButton("Set custom window icon", changeIconPanel);
-			resetIconButton = setUpButton("Remove custom window icon", changeIconPanel);
-			// Set up the rest of the UI
+
+			// Change icon
+			setUpButton("Set custom window icon", changeIconPanel).addActionListener(e -> {
+				// Choose a custom icon
+				setWindowsIcon(transparentIcon);
+				int hasChosenIcon = fileChooser.showOpenDialog(this);
+
+				if (hasChosenIcon == SystemFileChooser.APPROVE_OPTION) {
+					setIconImage(new ImageIcon(fileChooser.getSelectedFile().getAbsolutePath()).getImage());
+				} else {
+					setWindowsIcon(null);
+				}
+			});
+
+			// Reset icon
+			setUpButton("Remove custom window icon", changeIconPanel).addActionListener(e -> {
+				removeOrSetIconToDefault();
+			});
+
+			// Set up the rest of the UI and the window icon
 			setRestUILevels();
-			// Set up the window icon
 			removeOrSetIconToDefault();
 		}
 
@@ -110,9 +142,17 @@ public class MainFrame extends JFrame implements ActionListener, ComponentListen
 		changeWindowSize();
 		setLayout(null);
 		setLocationRelativeTo(null);
-		addComponentListener(this);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setVisible(true);
+
+		// Change widthField and heightField when the window is resized by mouse
+		addComponentListener(new ComponentAdapter() {
+			@Override
+			public void componentResized(ComponentEvent _) {
+				widthField.setValue(getWidth());
+				heightField.setValue(getHeight());
+			}
+		});
 	}
 
 	private ArrayList<JPanel> setRestUILevels() {
@@ -120,7 +160,14 @@ public class MainFrame extends JFrame implements ActionListener, ComponentListen
 
 		// Change window title label
 		JPanel changeWindowTitleLabelPanel = setUpPanel(3);
-		changeWindowTitleLabel = setUpLabel("Change window title", changeWindowTitleLabelPanel);
+
+		setUpLabel("Change window title", changeWindowTitleLabelPanel).addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent _) {
+				focusTextfield(changeWindowTitle);
+			}
+		});
+
 		panels.add(changeWindowTitleLabelPanel);
 
 		// Change window title textfield
@@ -128,31 +175,63 @@ public class MainFrame extends JFrame implements ActionListener, ComponentListen
 		changeWindowTitleTextfieldPanel.setLocation(changeWindowTitleTextfieldPanel.getX(), changeWindowTitleTextfieldPanel.getY() - 15);
 
 		changeWindowTitle = new JTextField(25);
-		changeWindowTitle.addKeyListener(this);
+		changeWindowTitle.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyReleased(KeyEvent _) {
+				String changeWindowTitleText = changeWindowTitle.getText();
+
+				if (changeWindowTitleText.isEmpty()) {
+					setTitle(originalWindowTitle);
+				} else {
+					setTitle(changeWindowTitleText);
+				}
+			}
+		});
 
 		changeWindowTitleTextfieldPanel.add(changeWindowTitle);
 		panels.add(changeWindowTitleTextfieldPanel);
 
 		// Resizable checkbox
-		resizable = setUpCheckBox("Resize with mouse and maximize/restore button");
+		JCheckBox resizable = setUpCheckBox("Resize with mouse and maximize/restore button");
+		resizable.addActionListener(e -> {
+			setResizable(!isResizable());
+		});
+
 		JPanel resizablePanel = setUpPanel(5);
 		resizablePanel.setLocation(resizablePanel.getX(), resizablePanel.getY() - 20);
 		resizablePanel.add(resizable);
 		panels.add(resizablePanel);
 
 		// Toggle between light and dark mode
-		darkMode = setUpCheckBox("Dark mode");
+		JCheckBox darkMode = setUpCheckBox("Dark mode");
+		darkMode.addActionListener(e -> {
+			if (FlatLaf.isLafDark()) {
+				FlatLightLaf.setup();
+			} else {
+				FlatDarkLaf.setup();
+			}
+
+			FlatLaf.updateUI();
+		});
+
 		JPanel darkModePanel = setUpPanel(6);
 		darkModePanel.setLocation(darkModePanel.getX(), darkModePanel.getY() - 28);
 		darkModePanel.add(darkMode);
 		panels.add(darkModePanel);
 
 		// Resize & exit buttons
-		bottomButtonsPanel = setUpPanel(7);
+		JPanel bottomButtonsPanel = setUpPanel(7);
 		bottomButtonsPanel.setLocation(bottomButtonsPanel.getX(), bottomButtonsPanel.getY() - 35);
 
-		resizeButton = setUpButton("Resize", bottomButtonsPanel);
-		exitButton = setUpButton("Exit", bottomButtonsPanel);
+		// Resize button
+		setUpButton("Resize", bottomButtonsPanel).addActionListener(e -> {
+			changeWindowSize();
+		});
+
+		// Exit button
+		setUpButton("Exit", bottomButtonsPanel).addActionListener(e -> {
+			System.exit(0);
+		});
 
 		panels.add(bottomButtonsPanel);
 
@@ -201,8 +280,7 @@ public class MainFrame extends JFrame implements ActionListener, ComponentListen
 	private JSpinner setUpSpinner(JPanel panel, int initialValue) {
 		JSpinner spinner = new JSpinner(new SpinnerNumberModel(initialValue, 0, Integer.MAX_VALUE, 1));
 		spinner.setPreferredSize(new Dimension(75, 26));
-		spinner.addChangeListener(this);
-		spinner.getEditor().getComponent(0).addKeyListener(this);
+		spinner.getEditor().getComponent(0).addKeyListener(changeWindowSizeOnKeyEnter);
 		panel.add(spinner);
 		return spinner;
 	}
@@ -210,20 +288,17 @@ public class MainFrame extends JFrame implements ActionListener, ComponentListen
 	private JCheckBox setUpCheckBox(String text) {
 		JCheckBox checkbox = new JCheckBox(text, true);
 		checkbox.setOpaque(false);
-		checkbox.addActionListener(this);
 		return checkbox;
 	}
 
 	private JLabel setUpLabel(String text, JPanel panel) {
 		JLabel label = new JLabel(text);
-		label.addMouseListener(this);
 		panel.add(label);
 		return label;
 	}
 
 	private JButton setUpButton(String text, JPanel buttonPanel) {
 		JButton button = new JButton(text);
-		button.addActionListener(this);
 		buttonPanel.add(button);
 		return button;
 	}
@@ -235,127 +310,5 @@ public class MainFrame extends JFrame implements ActionListener, ComponentListen
 		panel.setLayout(flowLayout);
 		add(panel);
 		return panel;
-	}
-
-	// Interface methods
-
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		// Buttons and change window title textfield
-		Object source = e.getSource();
-
-		if (source == resizeButton) {
-			changeWindowSize();
-		} else if (source == resizable) {
-			setResizable(!isResizable());
-		} else if (source == darkMode) {
-			// Change to light/dark mode
-			if (FlatLaf.isLafDark()) {
-				FlatLightLaf.setup();
-			} else {
-				FlatDarkLaf.setup();
-			}
-
-			FlatLaf.updateUI();
-		} else if (source == changeIconButton) {
-			// Choose a custom icon
-			setWindowsIcon(transparentIcon);
-			int hasChosenIcon = fileChooser.showOpenDialog(this);
-
-			if (hasChosenIcon == SystemFileChooser.APPROVE_OPTION) {
-				setIconImage(new ImageIcon(fileChooser.getSelectedFile().getAbsolutePath()).getImage());
-			} else {
-				setWindowsIcon(null);
-			}
-		} else if (source == resetIconButton) {
-			// Reset the custom icon to default one
-			removeOrSetIconToDefault();
-		} else if (source == exitButton) {
-			System.exit(0);
-		}
-	}
-
-	@Override
-	public void componentResized(ComponentEvent e) {
-		widthField.setValue(getWidth());
-		heightField.setValue(getHeight());
-	}
-
-	@Override
-	public void componentMoved(ComponentEvent e) {
-	}
-
-	@Override
-	public void componentShown(ComponentEvent e) {
-	}
-
-	@Override
-	public void componentHidden(ComponentEvent e) {
-	}
-
-	@Override
-	public void stateChanged(ChangeEvent e) {
-		Object source = e.getSource();
-
-		if (source == widthField) {
-			widthSize = (int) widthField.getValue();
-		} else if (source == heightField) {
-			heightSize = (int) heightField.getValue();
-		}
-	}
-
-	@Override
-	public void keyTyped(KeyEvent e) {
-	}
-
-	@Override
-	public void keyPressed(KeyEvent e) {
-	}
-
-	@Override
-	public void keyReleased(KeyEvent e) {
-		if (e.getSource() == changeWindowTitle) {
-			String changeWindowTitleText = changeWindowTitle.getText();
-
-			if (changeWindowTitleText.isEmpty()) {
-				setTitle(originalWindowTitle);
-			} else {
-				setTitle(changeWindowTitleText);
-			}
-		}
-
-		if (e.getKeyCode() == KeyEvent.VK_ENTER) {
-			changeWindowSize();
-		}
-	}
-
-	@Override
-	public void mouseClicked(MouseEvent e) {
-		// Focus on a textfield once its label is clicked
-		Object source = e.getSource();
-
-		if (source == widthLabel) {
-			focusTextfield(widthField);
-		} else if (source == heightLabel) {
-			focusTextfield(heightField);
-		} else if (source == changeWindowTitleLabel) {
-			focusTextfield(changeWindowTitle);
-		}
-	}
-
-	@Override
-	public void mousePressed(MouseEvent e) {
-	}
-
-	@Override
-	public void mouseReleased(MouseEvent e) {
-	}
-
-	@Override
-	public void mouseEntered(MouseEvent e) {
-	}
-
-	@Override
-	public void mouseExited(MouseEvent e) {
 	}
 }
