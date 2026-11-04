@@ -171,8 +171,8 @@ public class MainFrame extends JFrame {
 		panels.add(changeWindowTitleLabelPanel);
 
 		// Change window title textfield
-		JPanel changeWindowTitleTextfieldPanel = setUpPanel(4);
-		changeWindowTitleTextfieldPanel.setLocation(changeWindowTitleTextfieldPanel.getX(), changeWindowTitleTextfieldPanel.getY() - 15);
+		JPanel changeWindowTitlePanel = setUpPanel(4);
+		changeWindowTitlePanel.setLocation(changeWindowTitlePanel.getX(), changeWindowTitlePanel.getY() - 15);
 
 		changeWindowTitle = new JTextField(25);
 		changeWindowTitle.addKeyListener(new KeyAdapter() {
@@ -188,8 +188,8 @@ public class MainFrame extends JFrame {
 			}
 		});
 
-		changeWindowTitleTextfieldPanel.add(changeWindowTitle);
-		panels.add(changeWindowTitleTextfieldPanel);
+		changeWindowTitlePanel.add(changeWindowTitle);
+		panels.add(changeWindowTitlePanel);
 
 		// Resizable checkbox
 		JCheckBox resizable = setUpCheckBox("Resize with mouse and maximize/restore button");
