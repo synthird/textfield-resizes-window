@@ -67,7 +67,7 @@ sudo apt install ./textfield-resizes-window_1.8.0_amd64.deb
 ## Running the source code
 
 1. Clone this repository.
-2. Go to the ```textfield-resizes-window``` folder in your terminal.
+2. Go into your cloned repository in your terminal.
 3. Run the command:
 
 ```bash
