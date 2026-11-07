@@ -58,16 +58,6 @@ public class MainFrame extends JFrame {
 	int widthSize = 435,
 			heightSize = 283;
 
-	// Change window size when the enter key is pressed
-	KeyAdapter changeWindowSizeOnKeyEnter = new KeyAdapter() {
-		@Override
-		public void keyReleased(KeyEvent e) {
-			if (e.getKeyCode() == KeyEvent.VK_ENTER) {
-				changeWindowSize();
-			}
-		}
-	};
-
 	public MainFrame() {
 		// File chooser
 		fileChooser.setDialogTitle("Set icon");
@@ -280,7 +270,15 @@ public class MainFrame extends JFrame {
 	private JSpinner setUpSpinner(JPanel panel, int initialValue) {
 		JSpinner spinner = new JSpinner(new SpinnerNumberModel(initialValue, 0, Integer.MAX_VALUE, 1));
 		spinner.setPreferredSize(new Dimension(75, 26));
-		spinner.getEditor().getComponent(0).addKeyListener(changeWindowSizeOnKeyEnter);
+		spinner.getEditor().getComponent(0).addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyReleased(KeyEvent e) {
+				if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+					changeWindowSize();
+				}
+			}
+		});
+
 		panel.add(spinner);
 		return spinner;
 	}
