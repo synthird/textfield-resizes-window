@@ -232,8 +232,8 @@ public class MainFrame extends JFrame {
 			File iconFile = iconPath.toFile();
 
 			if (iconFile.exists()) {
-				ImageIcon imageIcon = new ImageIcon(iconFile.getAbsolutePath());
-				setIconImage(imageIcon.getImage());
+				Image imageIcon = new ImageIcon(iconFile.getAbsolutePath()).getImage();
+				setIconImage(imageIcon);
 			} else {
 				setIconImage(null);
 			}
