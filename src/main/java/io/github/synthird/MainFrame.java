@@ -42,7 +42,6 @@ import com.formdev.flatlaf.util.SystemInfo;
 public class MainFrame extends JFrame {
 	String originalWindowTitle = "Textfield resizes window";
 
-	FlowLayout flowLayout = new FlowLayout(FlowLayout.LEFT);
 	BufferedImage transparentIcon = new BufferedImage(1, 1, BufferedImage.TYPE_INT_ARGB);
 	SystemFileChooser fileChooser = new SystemFileChooser();
 
@@ -304,7 +303,7 @@ public class MainFrame extends JFrame {
 		JPanel panel = new JPanel();
 		panel.setOpaque(false);
 		panel.setBounds(0, 35 * level, 510, 35);
-		panel.setLayout(flowLayout);
+		panel.setLayout(new FlowLayout(FlowLayout.LEFT));
 		add(panel);
 		return panel;
 	}
