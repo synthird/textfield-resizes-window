@@ -43,8 +43,6 @@ public class MainFrame extends JFrame {
 	String originalWindowTitle = "Textfield resizes window";
 
 	BufferedImage transparentIcon = new BufferedImage(1, 1, BufferedImage.TYPE_INT_ARGB);
-	SystemFileChooser fileChooser = new SystemFileChooser();
-
 	String appPath = System.getProperty("jpackage.app-path");
 
 	// Textfields
@@ -59,6 +57,7 @@ public class MainFrame extends JFrame {
 
 	public MainFrame() {
 		// File chooser
+		SystemFileChooser fileChooser = new SystemFileChooser();
 		fileChooser.setDialogTitle("Set icon");
 		fileChooser.putPlatformProperty(SystemFileChooser.WINDOWS_FILE_NAME_LABEL, "Set icon to:");
 		fileChooser.setApproveButtonText("Choose icon");
