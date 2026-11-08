@@ -41,11 +41,10 @@ import com.formdev.flatlaf.util.SystemInfo;
 
 public class MainFrame extends JFrame {
 	String originalWindowTitle = "Textfield resizes window";
+	JTextField changeWindowTitle;
 
 	BufferedImage transparentIcon = new BufferedImage(1, 1, BufferedImage.TYPE_INT_ARGB);
 	String appPath = System.getProperty("jpackage.app-path");
-
-	JTextField changeWindowTitle;
 
 	// Default window size
 	int widthSize = 435,
