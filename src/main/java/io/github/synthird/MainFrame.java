@@ -45,10 +45,6 @@ public class MainFrame extends JFrame {
 	BufferedImage transparentIcon = new BufferedImage(1, 1, BufferedImage.TYPE_INT_ARGB);
 	String appPath = System.getProperty("jpackage.app-path");
 
-	// Textfields
-	JSpinner widthField,
-			heightField;
-
 	JTextField changeWindowTitle;
 
 	// Default window size
@@ -66,7 +62,7 @@ public class MainFrame extends JFrame {
 		// Width panel
 		JPanel widthPanel = setUpPanel(0);
 
-		widthField = setUpSpinner(widthPanel, widthSize);
+		JSpinner widthField = setUpSpinner(widthPanel, widthSize);
 		widthField.addChangeListener(e -> {
 			widthSize = (int) widthField.getValue();
 		});
@@ -81,7 +77,7 @@ public class MainFrame extends JFrame {
 		// Height panel
 		JPanel heightPanel = setUpPanel(1);
 	
-		heightField = setUpSpinner(heightPanel, heightSize);
+		JSpinner heightField = setUpSpinner(heightPanel, heightSize);
 		heightField.addChangeListener(e -> {
 			heightSize = (int) heightField.getValue();
 		});
