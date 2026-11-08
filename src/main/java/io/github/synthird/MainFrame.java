@@ -224,7 +224,6 @@ public class MainFrame extends JFrame {
 		});
 
 		panels.add(bottomButtonsPanel);
-
 		return panels;
 	}
 
