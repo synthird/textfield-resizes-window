@@ -90,7 +90,7 @@ public class MainFrame extends JFrame {
 
 		if (SystemInfo.isGNOME) {
 			// Don't create the change icon buttons in Linux GNOME desktop environment
-			for (JPanel panel : setRestUILevels()) {
+			for (JPanel panel : setUpRestUI()) {
 				panel.setLocation(panel.getX(), panel.getY() - 35);
 			}
 		} else {
@@ -116,7 +116,7 @@ public class MainFrame extends JFrame {
 			});
 
 			// Set up the rest of the UI and the window icon
-			setRestUILevels();
+			setUpRestUI();
 			removeOrSetIconToDefault();
 		}
 
@@ -138,7 +138,7 @@ public class MainFrame extends JFrame {
 		});
 	}
 
-	private ArrayList<JPanel> setRestUILevels() {
+	private ArrayList<JPanel> setUpRestUI() {
 		ArrayList<JPanel> panels = new ArrayList<>();
 
 		// Change window title label
