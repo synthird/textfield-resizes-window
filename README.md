@@ -47,9 +47,9 @@ sudo apt install ./textfield-resizes-window_1.9.0_amd64.deb
 # This command only works if you're in the same folder as the deb file.
 ```
 
-### Any operating system (Opening the jar file)
+### Any operating system (Executing the jar file)
 
-1. You need a JDK or JRE installed on your device to open the jar file. Here are a couple ones to choose:
+1. You need a JDK or JRE installed on your device to execute the jar file. Here are a couple ones to choose:
     
     - [Amazon Correto](https://aws.amazon.com/corretto/)
     - [Azul Zulu](https://www.azul.com/downloads/?package=jdk#zulu)
