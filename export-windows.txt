@@ -6,4 +6,4 @@
 --win-dir-chooser
 --win-shortcut
 --win-menu
---main-jar textfield-resizes-window.jar
+--main-jar textfield-resizes-window-1.9.0-jar-with-dependencies.jar
