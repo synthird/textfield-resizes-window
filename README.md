@@ -29,8 +29,8 @@ Resize a GUI window using textfields/textboxes.
 For e.g: If your distribution uses the ```dnf``` package manager, you type this in the terminal:
 
 ```bash
-sudo dnf install ./textfield-resizes-window-1.8.0-1.x86_64.rpm
-# Replace the "1.8.0" part with the version number you installed.
+sudo dnf install ./textfield-resizes-window-1.9.0-1.x86_64.rpm
+# Replace the "1.9.0" part with the version number you installed.
 # This command only works if you're in the same folder as the rpm file.
 ```
 
@@ -42,14 +42,14 @@ sudo dnf install ./textfield-resizes-window-1.8.0-1.x86_64.rpm
 For e.g: If your distribution uses the ```apt``` package manager, you type this in the terminal:
 
 ```bash
-sudo apt install ./textfield-resizes-window_1.8.0_amd64.deb 
-# Replace the "1.8.0" part with the version number you installed.
+sudo apt install ./textfield-resizes-window_1.9.0_amd64.deb 
+# Replace the "1.9.0" part with the version number you installed.
 # This command only works if you're in the same folder as the deb file.
 ```
 
-### Any operating system (Opening the jar file)
+### Any operating system (Executing the jar file)
 
-1. You need a JDK or JRE installed on your device to open the jar file. Here are a couple ones to choose:
+1. You need a JDK or JRE installed on your device to execute the jar file. Here are a couple ones to choose:
     
     - [Amazon Correto](https://aws.amazon.com/corretto/)
     - [Azul Zulu](https://www.azul.com/downloads/?package=jdk#zulu)
@@ -62,7 +62,7 @@ sudo apt install ./textfield-resizes-window_1.8.0_amd64.deb
     - [SapMachine](https://sapmachine.io/)
 
 2. Once you installed a JDK or JRE, download the ```jar``` file from the [releases page](https://github.com/Synthird/textfield-resizes-window/releases/latest).
-3. Execute the jar file using your JDK or JRE.
+3. Execute the jar file.
 
 ## Running the source code
 
