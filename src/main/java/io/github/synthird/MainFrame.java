@@ -72,7 +72,7 @@ public class MainFrame extends JFrame {
 			}
 		});
 
-		// Change icon buttons
+		// Change icon buttons panel
 		JPanel changeIconPanel = setUpPanel(2);
 
 		// Change icon
@@ -91,7 +91,7 @@ public class MainFrame extends JFrame {
 		// Reset icon
 		setUpButton("Remove custom window icon", changeIconPanel).addActionListener(e -> setIconImage(null));
 
-		// Change window title label
+		// Change window title label panel
 		JPanel changeWindowTitleLabelPanel = setUpPanel(3);
 
 		setUpLabel("Change window title", changeWindowTitleLabelPanel).addMouseListener(new MouseAdapter() {
@@ -101,7 +101,7 @@ public class MainFrame extends JFrame {
 			}
 		});
 
-		// Change window title textfield
+		// Change window title textfield panel
 		JPanel changeWindowTitlePanel = setUpPanel(4);
 		changeWindowTitlePanel.setLocation(changeWindowTitlePanel.getX(), changeWindowTitlePanel.getY() - 15);
 
@@ -121,15 +121,19 @@ public class MainFrame extends JFrame {
 
 		changeWindowTitlePanel.add(changeWindowTitle);
 
-		// Resizable checkbox
+		// Resizable checkbox panel
+		JPanel resizablePanel = setUpPanel(5);
+		resizablePanel.setLocation(resizablePanel.getX(), resizablePanel.getY() - 20);
+
 		JCheckBox resizable = setUpCheckBox("Resize with mouse and maximize/restore button");
 		resizable.addActionListener(e -> setResizable(!isResizable()));
 
-		JPanel resizablePanel = setUpPanel(5);
-		resizablePanel.setLocation(resizablePanel.getX(), resizablePanel.getY() - 20);
 		resizablePanel.add(resizable);
 
-		// Toggle between light and dark mode
+		// Toggle between light and dark mode panel
+		JPanel darkModePanel = setUpPanel(6);
+		darkModePanel.setLocation(darkModePanel.getX(), darkModePanel.getY() - 28);
+
 		JCheckBox darkMode = setUpCheckBox("Dark mode");
 		darkMode.addActionListener(e -> {
 			if (FlatLaf.isLafDark()) {
@@ -141,11 +145,9 @@ public class MainFrame extends JFrame {
 			FlatLaf.updateUI();
 		});
 
-		JPanel darkModePanel = setUpPanel(6);
-		darkModePanel.setLocation(darkModePanel.getX(), darkModePanel.getY() - 28);
 		darkModePanel.add(darkMode);
 
-		// Resize & exit buttons
+		// Resize & exit buttons panel
 		JPanel bottomButtonsPanel = setUpPanel(7);
 		bottomButtonsPanel.setLocation(bottomButtonsPanel.getX(), bottomButtonsPanel.getY() - 35);
 
