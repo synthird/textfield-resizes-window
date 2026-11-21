@@ -88,58 +88,26 @@ public class MainFrame extends JFrame {
 			}
 		});
 
-		if (SystemInfo.isGNOME) {
-			// Don't create the change icon buttons in Linux GNOME desktop environment
-			for (JPanel panel : setUpRestUI()) {
-				panel.setLocation(panel.getX(), panel.getY() - 35);
-			}
-		} else {
-			// Add the change icon buttons
-			JPanel changeIconPanel = setUpPanel(2);
+		// Change icon buttons
+		JPanel changeIconPanel = setUpPanel(2);
 
-			// Change icon
-			setUpButton("Set custom window icon", changeIconPanel).addActionListener(e -> {
-				// Choose a custom icon
-				setWindowsIcon(transparentIcon);
-				int hasChosenIcon = fileChooser.showOpenDialog(this);
+		// Change icon
+		setUpButton("Set custom window icon", changeIconPanel).addActionListener(e -> {
+			// Choose a custom icon
+			setWindowsIcon(transparentIcon);
+			int hasChosenIcon = fileChooser.showOpenDialog(this);
 
-				if (hasChosenIcon == SystemFileChooser.APPROVE_OPTION) {
-					setIconImage(new ImageIcon(fileChooser.getSelectedFile().getAbsolutePath()).getImage());
-				} else {
-					setWindowsIcon(null);
-				}
-			});
-
-			// Reset icon
-			setUpButton("Remove custom window icon", changeIconPanel).addActionListener(e -> {
-				removeOrSetIconToDefault();
-			});
-
-			// Set up the rest of the UI and the window icon
-			setUpRestUI();
-			removeOrSetIconToDefault();
-		}
-
-		// Window setup
-		setTitle(originalWindowTitle);
-		changeWindowSize();
-		setLayout(null);
-		setLocationRelativeTo(null);
-		setDefaultCloseOperation(EXIT_ON_CLOSE);
-		setVisible(true);
-
-		// Change widthField and heightField when the window is resized by mouse
-		addComponentListener(new ComponentAdapter() {
-			@Override
-			public void componentResized(ComponentEvent _) {
-				widthField.setValue(getWidth());
-				heightField.setValue(getHeight());
+			if (hasChosenIcon == SystemFileChooser.APPROVE_OPTION) {
+				setIconImage(new ImageIcon(fileChooser.getSelectedFile().getAbsolutePath()).getImage());
+			} else {
+				setWindowsIcon(null);
 			}
 		});
-	}
 
-	private ArrayList<JPanel> setUpRestUI() {
-		ArrayList<JPanel> panels = new ArrayList<>();
+		// Reset icon
+		setUpButton("Remove custom window icon", changeIconPanel).addActionListener(e -> {
+			removeOrSetIconToDefault();
+		});
 
 		// Change window title label
 		JPanel changeWindowTitleLabelPanel = setUpPanel(3);
@@ -150,8 +118,6 @@ public class MainFrame extends JFrame {
 				focusTextfield(changeWindowTitle);
 			}
 		});
-
-		panels.add(changeWindowTitleLabelPanel);
 
 		// Change window title textfield
 		JPanel changeWindowTitlePanel = setUpPanel(4);
@@ -172,7 +138,6 @@ public class MainFrame extends JFrame {
 		});
 
 		changeWindowTitlePanel.add(changeWindowTitle);
-		panels.add(changeWindowTitlePanel);
 
 		// Resizable checkbox
 		JCheckBox resizable = setUpCheckBox("Resize with mouse and maximize/restore button");
@@ -183,7 +148,6 @@ public class MainFrame extends JFrame {
 		JPanel resizablePanel = setUpPanel(5);
 		resizablePanel.setLocation(resizablePanel.getX(), resizablePanel.getY() - 20);
 		resizablePanel.add(resizable);
-		panels.add(resizablePanel);
 
 		// Toggle between light and dark mode
 		JCheckBox darkMode = setUpCheckBox("Dark mode");
@@ -200,7 +164,6 @@ public class MainFrame extends JFrame {
 		JPanel darkModePanel = setUpPanel(6);
 		darkModePanel.setLocation(darkModePanel.getX(), darkModePanel.getY() - 28);
 		darkModePanel.add(darkMode);
-		panels.add(darkModePanel);
 
 		// Resize & exit buttons
 		JPanel bottomButtonsPanel = setUpPanel(7);
@@ -216,8 +179,23 @@ public class MainFrame extends JFrame {
 			System.exit(0);
 		});
 
-		panels.add(bottomButtonsPanel);
-		return panels;
+		// Window setup
+		setTitle(originalWindowTitle);
+		removeOrSetIconToDefault();
+		changeWindowSize();
+		setLayout(null);
+		setLocationRelativeTo(null);
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		setVisible(true);
+
+		// Change widthField and heightField when the window is resized by mouse
+		addComponentListener(new ComponentAdapter() {
+			@Override
+			public void componentResized(ComponentEvent _) {
+				widthField.setValue(getWidth());
+				heightField.setValue(getHeight());
+			}
+		});
 	}
 
 	private void changeWindowSize() {
