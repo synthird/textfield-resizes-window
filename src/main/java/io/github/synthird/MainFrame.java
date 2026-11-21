@@ -60,7 +60,7 @@ public class MainFrame extends JFrame {
 
 		setUpLabel("px (Width)", widthPanel).addMouseListener(new MouseAdapter() {
 			@Override
-			public void mouseClicked(MouseEvent _) {
+			public void mouseClicked(MouseEvent e) {
 				focusTextfield(widthField);
 			}
 		});
@@ -75,7 +75,7 @@ public class MainFrame extends JFrame {
 	
 		setUpLabel("px (Height)", heightPanel).addMouseListener(new MouseAdapter() {
 			@Override
-			public void mouseClicked(MouseEvent _) {
+			public void mouseClicked(MouseEvent e) {
 				focusTextfield(heightField);
 			}
 		});
@@ -106,7 +106,7 @@ public class MainFrame extends JFrame {
 
 		setUpLabel("Change window title", changeWindowTitleLabelPanel).addMouseListener(new MouseAdapter() {
 			@Override
-			public void mouseClicked(MouseEvent _) {
+			public void mouseClicked(MouseEvent e) {
 				focusTextfield(changeWindowTitle);
 			}
 		});
@@ -118,7 +118,7 @@ public class MainFrame extends JFrame {
 		changeWindowTitle = new JTextField(25);
 		changeWindowTitle.addKeyListener(new KeyAdapter() {
 			@Override
-			public void keyReleased(KeyEvent _) {
+			public void keyReleased(KeyEvent e) {
 				String changeWindowTitleText = changeWindowTitle.getText();
 
 				if (changeWindowTitleText.isEmpty()) {
@@ -183,7 +183,7 @@ public class MainFrame extends JFrame {
 		// Change widthField and heightField when the window is resized by mouse
 		addComponentListener(new ComponentAdapter() {
 			@Override
-			public void componentResized(ComponentEvent _) {
+			public void componentResized(ComponentEvent e) {
 				widthField.setValue(getWidth());
 				heightField.setValue(getHeight());
 			}
