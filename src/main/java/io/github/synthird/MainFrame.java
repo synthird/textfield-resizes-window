@@ -61,10 +61,10 @@ public class MainFrame extends JFrame {
 
 		// Height panel
 		JPanel heightPanel = setUpPanel(1);
-	
+
 		JSpinner heightField = setUpSpinner(heightPanel, heightSize);
 		heightField.addChangeListener(e -> heightSize = (int) heightField.getValue());
-	
+
 		setUpLabel("px (Height)", heightPanel).addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -151,10 +151,7 @@ public class MainFrame extends JFrame {
 		JPanel bottomButtonsPanel = setUpPanel(7);
 		bottomButtonsPanel.setLocation(bottomButtonsPanel.getX(), bottomButtonsPanel.getY() - 35);
 
-		// Resize button
 		setUpButton("Resize", bottomButtonsPanel).addActionListener(e -> changeWindowSize());
-
-		// Exit button
 		setUpButton("Exit", bottomButtonsPanel).addActionListener(e -> System.exit(0));
 
 		// Window setup
