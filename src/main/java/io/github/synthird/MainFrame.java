@@ -10,9 +10,6 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
-import java.io.File;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -36,7 +33,6 @@ public class MainFrame extends JFrame {
 	JTextField changeWindowTitle;
 
 	BufferedImage transparentIcon = new BufferedImage(1, 1, BufferedImage.TYPE_INT_ARGB);
-	String appPath = System.getProperty("jpackage.app-path");
 
 	// Default window size
 	int widthSize = 435,
@@ -93,7 +89,7 @@ public class MainFrame extends JFrame {
 		});
 
 		// Reset icon
-		setUpButton("Remove custom window icon", changeIconPanel).addActionListener(e -> removeOrSetIconToDefault());
+		setUpButton("Remove custom window icon", changeIconPanel).addActionListener(e -> setIconImage(null));
 
 		// Change window title label
 		JPanel changeWindowTitleLabelPanel = setUpPanel(3);
@@ -161,7 +157,6 @@ public class MainFrame extends JFrame {
 
 		// Window setup
 		setTitle(originalWindowTitle);
-		removeOrSetIconToDefault();
 		changeWindowSize();
 		setLayout(null);
 		setLocationRelativeTo(null);
@@ -180,23 +175,6 @@ public class MainFrame extends JFrame {
 
 	private void changeWindowSize() {
 		setSize(widthSize, heightSize);
-	}
-
-	private void removeOrSetIconToDefault() {
-		if (appPath != null) {
-			Path installedDir = Paths.get(appPath).getParent().getParent(),
-					iconPath = installedDir.resolve("lib").resolve("app").resolve("icon.png");
-			File iconFile = iconPath.toFile();
-
-			if (iconFile.exists()) {
-				Image imageIcon = new ImageIcon(iconFile.getAbsolutePath()).getImage();
-				setIconImage(imageIcon);
-			} else {
-				setIconImage(null);
-			}
-		} else {
-			setIconImage(null);
-		}
 	}
 
 	private void setWindowsIcon(Image image) {
