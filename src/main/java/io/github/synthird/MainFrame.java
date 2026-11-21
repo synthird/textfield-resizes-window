@@ -54,9 +54,7 @@ public class MainFrame extends JFrame {
 		JPanel widthPanel = setUpPanel(0);
 
 		JSpinner widthField = setUpSpinner(widthPanel, widthSize);
-		widthField.addChangeListener(e -> {
-			widthSize = (int) widthField.getValue();
-		});
+		widthField.addChangeListener(e -> widthSize = (int) widthField.getValue());
 
 		setUpLabel("px (Width)", widthPanel).addMouseListener(new MouseAdapter() {
 			@Override
@@ -69,9 +67,7 @@ public class MainFrame extends JFrame {
 		JPanel heightPanel = setUpPanel(1);
 	
 		JSpinner heightField = setUpSpinner(heightPanel, heightSize);
-		heightField.addChangeListener(e -> {
-			heightSize = (int) heightField.getValue();
-		});
+		heightField.addChangeListener(e -> heightSize = (int) heightField.getValue());
 	
 		setUpLabel("px (Height)", heightPanel).addMouseListener(new MouseAdapter() {
 			@Override
@@ -97,9 +93,7 @@ public class MainFrame extends JFrame {
 		});
 
 		// Reset icon
-		setUpButton("Remove custom window icon", changeIconPanel).addActionListener(e -> {
-			removeOrSetIconToDefault();
-		});
+		setUpButton("Remove custom window icon", changeIconPanel).addActionListener(e -> removeOrSetIconToDefault());
 
 		// Change window title label
 		JPanel changeWindowTitleLabelPanel = setUpPanel(3);
@@ -133,9 +127,7 @@ public class MainFrame extends JFrame {
 
 		// Resizable checkbox
 		JCheckBox resizable = setUpCheckBox("Resize with mouse and maximize/restore button");
-		resizable.addActionListener(e -> {
-			setResizable(!isResizable());
-		});
+		resizable.addActionListener(e -> setResizable(!isResizable()));
 
 		JPanel resizablePanel = setUpPanel(5);
 		resizablePanel.setLocation(resizablePanel.getX(), resizablePanel.getY() - 20);
@@ -162,14 +154,10 @@ public class MainFrame extends JFrame {
 		bottomButtonsPanel.setLocation(bottomButtonsPanel.getX(), bottomButtonsPanel.getY() - 35);
 
 		// Resize button
-		setUpButton("Resize", bottomButtonsPanel).addActionListener(e -> {
-			changeWindowSize();
-		});
+		setUpButton("Resize", bottomButtonsPanel).addActionListener(e -> changeWindowSize());
 
 		// Exit button
-		setUpButton("Exit", bottomButtonsPanel).addActionListener(e -> {
-			System.exit(0);
-		});
+		setUpButton("Exit", bottomButtonsPanel).addActionListener(e -> System.exit(0));
 
 		// Window setup
 		setTitle(originalWindowTitle);
