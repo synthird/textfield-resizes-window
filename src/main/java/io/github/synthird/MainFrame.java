@@ -75,7 +75,6 @@ public class MainFrame extends JFrame {
 		// Change icon buttons panel
 		JPanel changeIconPanel = setUpPanel(2);
 
-		// Change icon
 		setUpButton("Set custom window icon", changeIconPanel).addActionListener(e -> {
 			// Choose a custom icon
 			setWindowsIcon(transparentIcon);
@@ -88,7 +87,6 @@ public class MainFrame extends JFrame {
 			}
 		});
 
-		// Reset icon
 		setUpButton("Remove custom window icon", changeIconPanel).addActionListener(e -> setIconImage(null));
 
 		// Change window title label panel
