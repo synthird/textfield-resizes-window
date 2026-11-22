@@ -75,7 +75,7 @@ public class MainFrame extends JFrame {
 		// Change icon buttons panel
 		JPanel changeIconPanel = setUpPanel(2);
 
-		setUpButton("Set custom window icon", changeIconPanel).addActionListener(e -> {
+		setUpButton("Set icon", changeIconPanel).addActionListener(e -> {
 			// Choose a custom icon
 			setWindowsIcon(transparentIcon);
 			int hasChosenIcon = fileChooser.showOpenDialog(this);
@@ -87,7 +87,7 @@ public class MainFrame extends JFrame {
 			}
 		});
 
-		setUpButton("Remove custom window icon", changeIconPanel).addActionListener(e -> setIconImage(null));
+		setUpButton("Remove icon", changeIconPanel).addActionListener(e -> setIconImage(null));
 
 		// Change window title label panel
 		JPanel changeWindowTitleLabelPanel = setUpPanel(3);
