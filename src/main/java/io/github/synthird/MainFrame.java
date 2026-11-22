@@ -92,7 +92,7 @@ public class MainFrame extends JFrame {
 		// Change window title label panel
 		JPanel changeWindowTitleLabelPanel = setUpPanel(3);
 
-		setUpLabel("Change window title", changeWindowTitleLabelPanel).addMouseListener(new MouseAdapter() {
+		setUpLabel("Change title", changeWindowTitleLabelPanel).addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				focusTextfield(changeWindowTitle);
