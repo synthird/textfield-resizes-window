@@ -49,7 +49,7 @@ sudo apt install ./textfield-resizes-window_1.9.0_amd64.deb
 
 ### Any operating system (Executing the jar file)
 
-1. Download a JDK if you haven't already. Here are a couple ones to choose:
+1. Download a JDK or JRE if you haven't already. Here are a couple ones to choose:
     
     - [Amazon Correto](https://aws.amazon.com/corretto/)
     - [Azul Zulu](https://www.azul.com/downloads/?package=jdk#zulu)
