@@ -32,6 +32,8 @@ public class MainFrame extends JFrame {
 	String originalWindowTitle = "Textfield resizes window";
 	JTextField changeWindowTitle;
 
+	JButton removeIconButton;
+
 	BufferedImage transparentIcon = new BufferedImage(1, 1, BufferedImage.TYPE_INT_ARGB);
 
 	// Default window size
@@ -82,12 +84,18 @@ public class MainFrame extends JFrame {
 
 			if (hasChosenIcon == SystemFileChooser.APPROVE_OPTION) {
 				setIconImage(new ImageIcon(fileChooser.getSelectedFile().getAbsolutePath()).getImage());
+				removeIconButton.setEnabled(true);
 			} else {
 				setWindowsIcon(null);
 			}
 		});
 
-		setUpButton("Remove icon", changeIconPanel).addActionListener(e -> setIconImage(null));
+		removeIconButton = setUpButton("Remove icon", changeIconPanel);
+		removeIconButton.addActionListener(e -> {
+			setIconImage(null);
+			removeIconButton.setEnabled(false);
+		});
+		removeIconButton.setEnabled(false);
 
 		// Change window title label panel
 		JPanel changeWindowTitleLabelPanel = setUpPanel(3);
