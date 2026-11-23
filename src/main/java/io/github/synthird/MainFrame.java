@@ -84,6 +84,7 @@ public class MainFrame extends JFrame {
 
 			if (hasChosenIcon == SystemFileChooser.APPROVE_OPTION) {
 				setIconImage(new ImageIcon(fileChooser.getSelectedFile().getAbsolutePath()).getImage());
+				removeIconButton.setEnabled(true);
 			} else {
 				setWindowsIcon(null);
 			}
