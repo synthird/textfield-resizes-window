@@ -13,10 +13,10 @@ Resize a GUI window using textfields/textboxes.
 
 ### Windows
 
-1. Download the ```exe``` file installer in the [releases page](https://github.com/Synthird/textfield-resizes-window/releases/latest).
-2. Run the ```exe``` file and proceed with installation.
+1. Download the ```exe``` file in the [releases page](https://github.com/Synthird/textfield-resizes-window/releases/latest).
+2. Run the file and proceed with installation.
 
-- If you get a message saying that the ```exe``` installer might be malicious, click more info and the run anyway button.
+- If you get a message saying that the ```exe``` file might be malicious, click more info and the run anyway button.
   - The ```exe``` is not malware. So, it's safe to install.
 
 ### Linux
