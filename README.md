@@ -68,7 +68,7 @@ sudo apt install ./textfield-resizes-window_1.9.0_amd64.deb
 
 1. Download a [JDK](#any-operating-system-executing-the-jar-file) if you haven't already.
 2. Clone this repository.
-3. Go into your cloned repository in your terminal.
+3. Go into your cloned repository in the terminal.
 4. Run the command:
 
 ```bash
