@@ -2,7 +2,7 @@
 
 Resize a GUI window using textfields/textboxes.
 
-![Textfield resizes window dark mode.](https://github.com/user-attachments/assets/237cf3b4-04a6-4c52-b022-e9ab1596541a)
+![Textfield resizes window dark mode.](https://github.com/user-attachments/assets/a7ddf867-4967-46f7-8191-c7fa12602a9c)
 
 ## Third-party libraries used
 
