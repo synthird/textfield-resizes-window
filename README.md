@@ -49,24 +49,13 @@ sudo apt install ./textfield-resizes-window_1.9.0_amd64.deb
 
 ### Any operating system (Executing the jar file)
 
-1. Download a JDK or JRE if you haven't already. Here are a couple ones to choose:
-    
-    - [Amazon Correto](https://aws.amazon.com/corretto/)
-    - [Azul Zulu](https://www.azul.com/downloads/?package=jdk#zulu)
-    - [Eclipse Adoptium Temurin](https://adoptium.net/)
-    - [IBM Semeru Runtimes](https://developer.ibm.com/languages/java/semeru-runtimes/)
-    - [Microsoft's openJDK](https://www.microsoft.com/openjdk)
-    - [Oracle GraalVM](https://www.graalvm.org/downloads/)
-    - [Oracle Java SE](https://www.oracle.com/java/technologies/downloads/)
-    - [Red Hat's openJDK](https://developers.redhat.com/products/openjdk/download)
-    - [SapMachine](https://sapmachine.io/)
-
+1. Download a [JDK or JRE](https://whichjdk.com/) if you haven't already. Here are a couple ones to choose:
 2. Download the ```jar``` file from the [releases page](https://github.com/Synthird/textfield-resizes-window/releases/latest).
 3. Execute the jar file.
 
 ## Running the source code
 
-1. Download a [JDK](#any-operating-system-executing-the-jar-file) if you haven't already.
+1. Download a [JDK](https://whichjdk.com/) if you haven't already.
 2. Clone this repository.
 3. Go into your cloned repository in the terminal.
 4. Run the command:
