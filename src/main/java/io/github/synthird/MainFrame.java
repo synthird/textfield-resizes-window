@@ -91,7 +91,10 @@ public class MainFrame extends JFrame {
 		});
 
 		removeIconButton = setUpButton("Remove icon", changeIconPanel);
-		removeIconButton.addActionListener(e -> setIconImage(null));
+		removeIconButton.addActionListener(e -> {
+			setIconImage(null);
+			removeIconButton.setEnabled(false);
+		});
 		removeIconButton.setEnabled(false);
 
 		// Change window title label panel
