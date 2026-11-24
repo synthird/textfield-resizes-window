@@ -6,7 +6,7 @@
 
 	<groupId>io.github.synthird</groupId>
 	<artifactId>textfield-resizes-window</artifactId>
-	<version>1.9.0</version>
+	<version>1.10.0</version>
 	<name>Textfield resizes window</name>
 	
 	<dependencies>
