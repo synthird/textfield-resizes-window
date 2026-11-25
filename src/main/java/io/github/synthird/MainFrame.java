@@ -80,7 +80,7 @@ public class MainFrame extends JFrame {
 		// Change icon buttons panel
 		JPanel changeIconPanel = setUpPanel(2);
 
-		setUpButton("Set icon", changeIconPanel).addActionListener(e -> {
+		setUpButton("Set custom icon", changeIconPanel).addActionListener(e -> {
 			// Choose a custom icon
 			setWindowsIcon(transparentIcon);
 			int hasChosenIcon = fileChooser.showOpenDialog(this);
