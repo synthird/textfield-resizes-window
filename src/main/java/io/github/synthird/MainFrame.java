@@ -37,7 +37,7 @@ public class MainFrame extends JFrame {
 	BufferedImage transparentIcon = new BufferedImage(1, 1, BufferedImage.TYPE_INT_ARGB);
 
 	// Default window size
-	int widthSize = 383,
+	int widthSize = 384,
 			heightSize = 283;
 
 	public MainFrame() {
