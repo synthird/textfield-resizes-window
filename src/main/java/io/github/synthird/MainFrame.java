@@ -93,7 +93,7 @@ public class MainFrame extends JFrame {
 			}
 		});
 
-		removeIconButton = setUpButton("Remove icon", changeIconPanel);
+		removeIconButton = setUpButton("Remove custom icon", changeIconPanel);
 		removeIconButton.addActionListener(e -> {
 			removeOrSetIconToDefault();
 			removeIconButton.setEnabled(false);
