@@ -2,7 +2,7 @@
 
 Resize a GUI window using textfields/textboxes.
 
-![Textfield resizes window dark mode.](https://github.com/user-attachments/assets/b6eedaee-a697-4a74-a41a-6f61c1b34ff9)
+![Textfield resizes window dark mode.](https://github.com/user-attachments/assets/2c25fca9-da65-44a6-b006-be91197406d7)
 
 ## Third-party libraries used
 
@@ -29,8 +29,8 @@ Resize a GUI window using textfields/textboxes.
 For e.g: If your distribution uses the ```dnf``` package manager, you type this in the terminal:
 
 ```bash
-sudo dnf install ./textfield-resizes-window-1.9.0-1.x86_64.rpm
-# Replace the "1.9.0" part with the version number you installed.
+sudo dnf install ./textfield-resizes-window-1.10.0-1.x86_64.rpm
+# Replace the "1.10.0" part with the version number you installed.
 # This command only works if you're in the same folder as the rpm file.
 ```
 
@@ -42,8 +42,8 @@ sudo dnf install ./textfield-resizes-window-1.9.0-1.x86_64.rpm
 For e.g: If your distribution uses the ```apt``` package manager, you type this in the terminal:
 
 ```bash
-sudo apt install ./textfield-resizes-window_1.9.0_amd64.deb 
-# Replace the "1.9.0" part with the version number you installed.
+sudo apt install ./textfield-resizes-window_1.10.0_amd64.deb 
+# Replace the "1.10.0" part with the version number you installed.
 # This command only works if you're in the same folder as the deb file.
 ```
 
